@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+    <!-- 定义数据源Bean，使用C3P0数据源实现 -->
+    <!-- 并设置连接数据库的驱动、URL、用户名、密码，
+    连接池最大连接数、最小连接数、初始连接数等参数  -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close"
+          p:driverClass="com.mysql.jdbc.Driver"
+          p:jdbcUrl="jdbc:mysql://localhost:3306/fisher?useUnicode=true&amp;characterEncoding=UTF-8"
+          p:user="root"
+          p:password="root"
+          p:maxPoolSize="200"
+          p:minPoolSize="2"
+          p:initialPoolSize="2"
+          p:maxIdleTime="20"/>
+
+    <!-- 定义Hibernate的SessionFactory，并依赖注入数据源，注入上面定义的dataSource -->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+          p:dataSource-ref="dataSource">
+        <!-- annotatedClasses属性用于列出全部持久化类 -->
+        <property name="annotatedClasses">
+            <list>
+                <!-- 以下用来列出Hibernate的持久化类 -->
+                <value>fisher.domain.Application</value>
+                <value>fisher.domain.Attend</value>
+                <value>fisher.domain.AttendType</value>
+                <value>fisher.domain.CheckBack</value>
+                <value>fisher.domain.Employee</value>
+                <value>fisher.domain.Manager</value>
+                <value>fisher.domain.File</value>
+            </list>
+        </property>
+        <!-- 定义Hibernate的SessionFactory的属性 -->
+        <property name="hibernateProperties">
+            <!-- 指定数据库方言、是否自动建表、是否生成SQL语句等 	-->
+            <value>
+                hibernate.dialect"hibernate.dialect.MySQL5InnoDBDialect
+                hibernate.hbm2ddl.auto=update
+                hibernate.show_sql=true
+                hibernate.format_sql=true
+                #开启二级缓存
+                hibernate.cache.use_second_level_cache=true
+                #设置二级缓存的提供者
+                hibernate.cache.region.factory_class=org.hibernate.cache.ehcache.EhCacheRegionFactory
+            </value>
+        </property>
+    </bean>
+
+    <!-- 配置DAO组件的模板 -->
+    <bean id="employeeDao"
+          class="fisher.dao.impl.EmployeeDaoHibernate4"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <bean id="fileDao"
+          class="fisher.dao.impl.FileDaoHibernate4"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <bean id="managerDao"
+          class="fisher.dao.impl.ManagerDaoHibernate4"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <bean id="attendDao"
+          class="fisher.dao.impl.AttendDaoHibernate4"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <bean id="attendTypeDao"
+          class="fisher.dao.impl.AttendTypeDaoHibernate4"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <bean id="appDao"
+          class="fisher.dao.impl.ApplicationDaoHibernate4"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <bean id="checkDao"
+          class="fisher.dao.impl.CheckBackDaoHibernate4"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <!-- 定义两个业务逻辑组件，继承业务逻辑组件的模板 -->
+    <bean id="empManager"
+          class="fisher.service.impl.EmpManagerImpl"
+          p:appDao-ref="appDao"
+          p:attendDao-ref="attendDao"
+          p:typeDao-ref="attendTypeDao"
+          p:checkDao-ref="checkDao"
+          p:empDao-ref="employeeDao"
+          p:mgrDao-ref="managerDao"
+          p:fileDao-ref="fileDao"/>
+    <bean id="mgrManager"
+          class="fisher.service.impl.MgrManagerImpl"
+          p:appDao-ref="appDao"
+          p:attendDao-ref="attendDao"
+          p:typeDao-ref="attendTypeDao"
+          p:checkDao-ref="checkDao"
+          p:empDao-ref="employeeDao"
+          p:mgrDao-ref="managerDao"/>
+
+    <!-- 定义触发器来管理任务Bean
+        cronExpression指定Cron表达式：周一到周五7点、12点执行调度-->
+    <bean id="cronTriggerPunch"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
+          p:cronExpression="0 0 7,12 ? * MON-FRI">
+        <property name="jobDetail">
+            <!-- 使用嵌套Bean的方式来定义任务Bean
+                jobClass指定任务Bean的实现类 -->
+            <bean class="org.springframework.scheduling.quartz.JobDetailFactoryBean"
+                  p:jobClass="fisher.schedule.PunchJob"
+                  p:durability="true">
+                <!-- 为任务Bean注入属性 -->
+                <property name="jobDataAsMap">
+                    <map>
+                        <entry key="empMgr" value-ref="empManager"/>
+                    </map>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!-- 执行实际的调度调度 -->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="cronTriggerPunch"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 配置Hibernate的局部事务管理器，使用HibernateTransactionManager类
+        并注入SessionFactory的引用 -->
+    <bean id="transactionManager" class=
+            "org.springframework.orm.hibernate4.HibernateTransactionManager"
+          p:sessionFactory-ref="sessionFactory"/>
+    <!-- 配置事务增强处理Bean,指定事务管理器 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!-- 用于配置详细的事务语义 -->
+        <tx:attributes>
+            <!-- 所有以'get'开头的方法是read-only的 -->
+            <tx:method name="get*" read-only="true"/>
+            <!-- 其他方法使用默认的事务设置 -->
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <!-- 配置一个切入点，匹配empManager和mgrManager
+            两个Bean的所有方法的执行 -->
+        <aop:pointcut id="leePointcut"
+                      expression="bean(empManager) or bean(mgrManager)"/>
+        <!-- 指定在leePointcut切入点应用txAdvice事务增强处理 -->
+        <aop:advisor advice-ref="txAdvice"
+                     pointcut-ref="leePointcut"/>
+    </aop:config>
+</beans>
