@@ -136,4 +136,13 @@ public interface EmpManager {
      * @return
      */
     void deleteFile(int fileId) throws HrException;;
+
+    /**
+     * 修改密码
+     *
+     * @param mgrName 员工名
+     * @param newPass 新密码
+     * @return 更改成功与否
+     */
+    String editPassword(String mgrName, String newPass, String originalPass);
 }

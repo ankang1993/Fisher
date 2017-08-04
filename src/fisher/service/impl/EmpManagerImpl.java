@@ -6,6 +6,7 @@ import fisher.exception.HrException;
 import fisher.service.EmpManager;
 import fisher.vo.AttendBean;
 import fisher.vo.FileBean;
+import org.apache.struts2.ServletActionContext;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -197,10 +198,10 @@ public class EmpManagerImpl
     }
 
     /**
-     * 员工查看自己的最近三天非正常打卡
+     * 员工查看自己的最近七天非正常打卡
      *
      * @param empName 员工名
-     * @return 该员工的最近三天的非正常打卡
+     * @return 该员工的最近七天的非正常打卡
      */
     public List<AttendBean> unAttend(String empName) {
         // 找出正常上班
@@ -211,7 +212,7 @@ public class EmpManagerImpl
         List<AttendBean> result = new ArrayList<AttendBean>();
         // 封装VO集合
         for (Attend att : attends) {
-            result.add(new AttendBean(att.getId(), att.getDutyDay()
+            result.add(new AttendBean(att.getId(), empName, att.getDutyDay()
                     , att.getType().getName(), att.getPunchTime()));
         }
         return result;
@@ -310,6 +311,23 @@ public class EmpManagerImpl
     public void deleteFile(int fileId)
             throws HrException {
         File file = fileDao.get(File.class, fileId);
+        // 返回指定文件对应的真实地址
+        String realPath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/files") + "\\" + file.getAddress();
+        new java.io.File(realPath).delete();
         fileDao.delete(file);
+    }
+
+    /**
+     * 修改密码
+     *
+     * @param mgrName 员工名
+     * @param newPass 新密码
+     * @return
+     */
+    public String editPassword(String mgrName, String newPass, String originalPass) {
+        Employee emp = empDao.findByName(mgrName);
+        if (!emp.getPass().equals(originalPass)) return "passwrong";
+        emp.setPass(newPass);
+        return "success";
     }
 }

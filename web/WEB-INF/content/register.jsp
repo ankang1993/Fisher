@@ -19,6 +19,7 @@
                     <s:actionmessage/>
                 </div>
             </s:if>
+            <s:actionerror cssClass="error"/>
             <div align="center">
                 <s:form action="processAdd">
                     <s:textfield name="emp.name" label="用户名"/>
@@ -27,7 +28,7 @@
                     <s:textfield name="emp.phone" label="电话"/>
                     <tr>
                         <td colspan="2">
-                            <s:submit value="注册" theme="simple"/>
+                            <s:submit value="注册" theme="simple"/>&nbsp;&nbsp;&nbsp;&nbsp;<s:reset theme="simple" value="重填"/>
                         </td>
                     </tr>
                 </s:form>

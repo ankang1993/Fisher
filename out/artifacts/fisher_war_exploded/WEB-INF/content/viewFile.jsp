@@ -31,7 +31,7 @@
                     <td colspan="3">
                         <s:form action="uploadFile" enctype="multipart/form-data" method="POST">
                             <s:file name="myFile" theme="simple" value="选择文件"/>
-                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <s:submit theme="simple" value="上传"/>
                         </s:form>
                     </td>

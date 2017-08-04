@@ -3,6 +3,7 @@ package fisher.service;
 import fisher.domain.Employee;
 import fisher.exception.HrException;
 import fisher.vo.AppBean;
+import fisher.vo.AttendBean;
 import fisher.vo.EmpBean;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface MgrManager {
      * @param emp 新增的员工
      * @param mgr 员工所属的经理
      */
-    void addEmp(Employee emp, String mgr) throws HrException;
+    String addEmp(Employee emp, String mgr) throws HrException;
 
     /**
      * 删除员工
@@ -48,4 +49,12 @@ public interface MgrManager {
      * @param result  是否通过
      */
     void check(int appid, String mgrName, boolean result);
+
+    /**
+     * 根据经理返回该部门的员工的未打卡情况
+     *
+     * @param mgr 经理名
+     * @return 经理的下属前七天的未打卡情况
+     */
+    List<AttendBean> getPunchsByMgr(String mgr);
 }

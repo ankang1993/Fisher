@@ -6,7 +6,7 @@ import fisher.domain.Employee;
 public class AddEmpAction extends MgrBaseAction {
     // 代表新增员工的成员变量
     private Employee emp;
-    //
+    // 代表确认密码
     private  String confimpass;
 
     // emp的setter和getter方法
@@ -35,10 +35,14 @@ public class AddEmpAction extends MgrBaseAction {
         //String mgrName = (String) ctx.getSession().get(WebConstant.USER);
         // 添加新用户
         if (!confimpass.equals(emp.getPass())) {
-            addActionMessage("Password inconsistency.");
+            addActionMessage("Password Inconsistency.");
             return "failure";
         }
-        mgr.addEmp(emp, "admin");
+        String res = mgr.addEmp(emp, "admin");
+        if (res.equals("duplicate")) {
+            addActionMessage("Name Duplicate.");
+            return "failure";
+        }
         addActionMessage("REGISTER SUCCESSFULLY.");
         return SUCCESS;
     }

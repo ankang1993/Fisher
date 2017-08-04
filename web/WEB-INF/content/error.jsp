@@ -17,10 +17,7 @@
     </tr>
     <tr>
         <td height="315">
-            <div class="pt11" style="color:red;width:600px;height:300px;
-	border:1px solid black;border-radius:10px" align="center">
-                <s:property value="exception.message"/>
-            </div>
+            <s:property value="exception.message"/>
         </td>
     </tr>
     <tr>

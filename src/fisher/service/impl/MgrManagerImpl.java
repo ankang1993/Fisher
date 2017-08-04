@@ -5,6 +5,7 @@ import fisher.domain.*;
 import fisher.exception.HrException;
 import fisher.service.MgrManager;
 import fisher.vo.AppBean;
+import fisher.vo.AttendBean;
 import fisher.vo.EmpBean;
 
 import java.util.ArrayList;
@@ -50,13 +51,19 @@ public class MgrManagerImpl
      * @param emp 新增的员工
      * @param mgr 员工所属的经理
      */
-    public void addEmp(Employee emp, String mgr) throws HrException {
+    public String addEmp(Employee emp, String mgr) throws HrException {
         Manager m = mgrDao.findByName(mgr);
         if (m == null) {
             throw new HrException("Are you Boss? Or do you have logged in?");
         }
+        Set<Employee> emps = m.getEmployees();
+        for (Employee e : emps) {
+            if (e.getName().equals(emp.getName())) return "duplicate";
+        }
         emp.setManager(m);
         empDao.save(emp);
+        emps.add(emp);
+        return "success";
     }
 
     /**
@@ -174,6 +181,41 @@ public class MgrManagerImpl
         }
         //保存申请批复
         checkDao.save(check);
+    }
+
+    /**
+     * 根据经理返回该部门的员工的未打卡情况
+     *
+     * @param mgr 经理名
+     * @return 经理的下属前七天的未打卡情况
+     */
+    public List<AttendBean> getPunchsByMgr(String mgr) {
+        Manager m = mgrDao.findByName(mgr);
+        if (m == null) {
+            throw new HrException("Are you Boss? Or do you have logged in?");
+        }
+        //查询该经理对应的全部员工
+        Set<Employee> emps = m.getEmployees();
+        //封装VO集
+        List<AttendBean> result = new ArrayList<AttendBean>();
+        //部门依然没有员工
+        if (emps == null || emps.size() < 1) {
+            return result;
+        }
+        // 找出正常上班
+        AttendType type = typeDao.get(AttendType.class, 1);
+        for (Employee e : emps) {
+            // 找出非正常上班的出勤记录
+            List<Attend> attends = attendDao.findByEmpUnAttend(e, type);
+            List<AttendBean> list = new ArrayList<AttendBean>();
+            // 封装VO集合
+            for (Attend att : attends) {
+                list.add(new AttendBean(att.getId(), e.getName(), att.getDutyDay()
+                        , att.getType().getName(), att.getPunchTime()));
+            }
+            if (list.size() > 0) result.addAll(list);
+        }
+        return result;
     }
 }
 

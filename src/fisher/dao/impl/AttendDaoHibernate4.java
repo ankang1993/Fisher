@@ -58,7 +58,7 @@ public class AttendDaoHibernate4 extends BaseDaoHibernate4<Attend>
     }
 
     /**
-     * 查看员工前三天的非正常打卡
+     * 查看员工前七天的非正常打卡
      *
      * @param emp 员工
      * @return 该员工的前三天的非正常打卡
@@ -68,7 +68,7 @@ public class AttendDaoHibernate4 extends BaseDaoHibernate4<Attend>
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar c = Calendar.getInstance();
         String end = sdf.format(c.getTime());
-        c.add(Calendar.DAY_OF_MONTH, -3);
+        c.add(Calendar.DAY_OF_MONTH, -7);
         String start = sdf.format(c.getTime());
         return find("from Attend as a where a.employee=?0 and "
                         + "a.type != ?1 and a.dutyDay between ?2 and ?3",

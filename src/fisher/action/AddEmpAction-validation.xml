@@ -22,6 +22,15 @@
 			<message>您输入的密码只能是字母和数字，且长度必须在4到25之间</message>
 		</field-validator>
 	</field>
+	<field name="confimpass">
+		<field-validator type="requiredstring">
+			<message>确认密码必填！</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="regex"><![CDATA[(\w{4,25})]]></param>
+			<message>您输入的密码只能是字母和数字，且长度必须在4到25之间</message>
+		</field-validator>
+	</field>
 	<field name="emp.phone">
 		<field-validator type="requiredstring">
 			<message>电话必填！</message>

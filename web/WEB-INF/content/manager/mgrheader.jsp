@@ -3,7 +3,7 @@
        background="${pageContext.request.contextPath}/images/bodybg.jpg">
     <tr>
         <td width="83">
-            <div align="center"><a href="managerPunch.action">打卡</a></div>
+            <div align="center"><a href="viewPunch.action">查看打卡</a></div>
         </td>
         <%--<td width="104">--%>
             <%--<div align="center"><a href="viewmanagerSalary.action">查看历史工资</a></div>--%>
@@ -13,6 +13,9 @@
         </td>
         <td width="139">
             <div align="center"><a href="viewEmp.action">管理成员</a></div>
+        </td>
+        <td width="94">
+            <div align="center"><a href="editPass.action">修改密码</a></div>
         </td>
         <td width="94">
         <div align="center"><a href="viewFile.action">查看文件</a></div>

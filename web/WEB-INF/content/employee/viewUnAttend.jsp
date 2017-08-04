@@ -21,13 +21,13 @@
                     </td>
                 </tr>
                 <tr bgcolor="#e1e1e1">
-                    <td colspan="4">您只能查看最近三天的非正常打卡，如有异议，请立即向BOSS申请。</td>
+                    <td colspan="4">您只能查看最近七天的非正常打卡，如有异议，请立即向BOSS申请。</td>
                 </tr>
                 <tr class="pt11" height="45">
                     <td width="29%"><b>打卡日期</b></td>
                     <td width="20%"><b>异动名称</b></td>
                     <td width="26%"><b>打卡时间</b></td>
-                    <td width="25%">选择</td>
+                    <td width="25%"><b>选择</b></td>
                 </tr>
                 <s:iterator value="unAttend" status="index">
                     <s:if test="#index.odd == true">

@@ -6,6 +6,7 @@ import java.util.Date;
 public class AttendBean implements Serializable {
     private static final long serialVersionUID = 48L;
     private int id;
+    private String empName;
     private String dutyDay;
     private String unType;
     private Date time;
@@ -15,9 +16,10 @@ public class AttendBean implements Serializable {
     }
 
     // 初始化全部成员变量的构造器
-    public AttendBean(int id, String dutyDay
+    public AttendBean(int id, String empName, String dutyDay
             , String unType, Date time) {
         this.id = id;
+        this.empName = empName;
         this.dutyDay = dutyDay;
         this.unType = unType;
         this.time = time;
@@ -30,6 +32,15 @@ public class AttendBean implements Serializable {
 
     public int getId() {
         return this.id;
+    }
+
+    //empName的setter和getter方法
+    public String getEmpName() {
+        return empName;
+    }
+
+    public void setEmpName(String empName) {
+        this.empName = empName;
     }
 
     // dutyDay的setter和getter方法
@@ -58,5 +69,4 @@ public class AttendBean implements Serializable {
     public Date getTime() {
         return this.time;
     }
-
 }

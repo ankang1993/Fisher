@@ -75,10 +75,10 @@
             <result>/WEB-INF/content/login.jsp</result>
         </action>
         <!-- 进入打卡 -->
-        <action name="*Punch"
+        <action name="employeePunch"
                 class="fisher.action.PunchAction">
             <interceptor-ref name="empStack"/>
-            <result>/WEB-INF/content/{1}/punch.jsp</result>
+            <result>/WEB-INF/content/employee/punch.jsp</result>
         </action>
         <!-- 处理上班打卡 -->
         <action name="*Come" method="come"
@@ -164,6 +164,19 @@
                 <param name="actionName">viewFile</param>
             </result>
         </action>
+        <!-- 进入更改密码页面的Action -->
+        <action name="editPass">
+            <interceptor-ref name="basicStack"/>
+            <interceptor-ref name="empAuth"/>
+            <result>/WEB-INF/content/editPassword.jsp</result>
+        </action>
+        <!-- 更改密码的Action -->
+        <action name="editPassword"
+                class="fisher.action.EditPasswordAction">
+            <result name="input">/WEB-INF/content/editPassword.jsp</result>
+            <result name="failure">/WEB-INF/content/editPassword.jsp</result>
+            <result>/WEB-INF/content/editPassword.jsp</result>
+        </action>
 
         <!--============================下面是经理角色的Action========================-->
         <!-- 经理查看员工 -->
@@ -181,6 +194,13 @@
             <result type="redirectAction">
                 <param name="actionName">viewEmp</param>
             </result>
+        </action>
+        <!-- 经理查看打卡 -->
+        <action name="viewPunch"
+                class="fisher.action.ViewPunchAction">
+            <interceptor-ref name="basicStack"/>
+            <interceptor-ref name="mgrAuth"/>
+            <result>/WEB-INF/content/manager/viewPunch.jsp</result>
         </action>
         <!-- 经理查看申请 -->
         <action name="viewApp"

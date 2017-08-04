@@ -38,7 +38,7 @@ public interface AttendDao extends BaseDao<Attend> {
                                       String dutyDay, boolean isCome);
 
     /**
-     * 查看员工前三天的非正常打卡
+     * 查看员工前七天的非正常打卡
      *
      * @param emp 员工
      * @return 该员工的前三天的非正常打卡
