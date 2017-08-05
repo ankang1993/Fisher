@@ -56,7 +56,7 @@ public class MgrManagerImpl
         if (m == null) {
             throw new HrException("Are you Boss? Or do you have logged in?");
         }
-        Set<Employee> emps = m.getEmployees();
+        List<Employee> emps = empDao.findAll(Employee.class);
         for (Employee e : emps) {
             if (e.getName().equals(emp.getName())) return "duplicate";
         }

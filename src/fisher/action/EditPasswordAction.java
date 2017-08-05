@@ -48,6 +48,7 @@ public class EditPasswordAction extends EmpBaseAction {
         ActionContext ctx = ActionContext.getContext();
         // 获取HttpSession中的user属性
         String mgrName = (String) ctx.getSession().get(WebConstant.USER);
+        if (mgrName == null) return "login";
         // 添加新用户
         if (!confirmPass.equals(newPass)) {
             addActionMessage("Password Inconsistency.");

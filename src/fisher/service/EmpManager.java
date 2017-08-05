@@ -55,7 +55,7 @@ public interface EmpManager {
     int validLogin(Manager mgr);
 
     /**
-     * 自动打卡，周一到周五，早上7：00为每个员工插入旷工记录
+     * 自动打卡，周一到周五，早上7：00、中午12：00为每个员工插入旷工记录
      */
     void autoPunch();
 

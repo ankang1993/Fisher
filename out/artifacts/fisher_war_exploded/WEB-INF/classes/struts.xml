@@ -175,6 +175,7 @@
                 class="fisher.action.EditPasswordAction">
             <result name="input">/WEB-INF/content/editPassword.jsp</result>
             <result name="failure">/WEB-INF/content/editPassword.jsp</result>
+            <result name = "login">/WEB-INF/content/login.jsp</result>
             <result>/WEB-INF/content/editPassword.jsp</result>
         </action>
 
