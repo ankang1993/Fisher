@@ -17,11 +17,11 @@
     </tr>
     <tr>
         <td>
-            <%--<s:if test="actionMessages.size()>0">--%>
-                <%--<div class="error">--%>
-                <%--<s:actionmessage/>--%>
-                <%--</div>--%>
-            <%--</s:if>--%>
+            <s:if test="actionMessages.size()>0">
+                <div class="error">
+                <s:actionmessage/>
+                </div>
+            </s:if>
         </td>
     </tr>
     <tr height="80">

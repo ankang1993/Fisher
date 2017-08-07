@@ -9,8 +9,8 @@
     <constant name="struts.custom.i18n.resources" value="resource"/>
     <constant name="struts.i18n.encoding" value="UTF-8"/>
     <constant name="struts.devMode" value="true"/>
-    <constant name="struts.multipart.maxSize" value="524288000"/>
-    <constant name="struts.multipart.saveDir" value="/WEB-INF"/>
+    <constant name="struts.multipart.maxSize" value="104857600"/>
+    <constant name="struts.multipart.saveDir" value="/WEB-INF/tmp"/>
     <package name="default" extends="struts-default">
         <interceptors>
             <!-- 配置普通员工角色的权限检查拦截器 -->
@@ -213,7 +213,7 @@
         <action name="check"
                 class="fisher.action.CheckAppAction">
             <interceptor-ref name="mgrStack"/>
-            <result type="chain">viewApps</result>
+            <result type="chain">viewApp</result>
         </action>
 
         <!--============================其他Action========================-->

@@ -24,7 +24,7 @@
                 <s:form action="processLogin">
                     <s:textfield name="manager.name" label="用户名"/>
                     <s:password name="manager.pass" label="密码"/>
-                    <s:textfield name="vercode" label="验证码"/>
+                    <s:textfield autocomplete="off" name="vercode" label="验证码"/>
                     <tr>
                         <td colspan="2">
                             <s:submit value="登录" theme="simple"/>&nbsp;&nbsp;&nbsp;&nbsp;<s:reset theme="simple" value="重填"/>

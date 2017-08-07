@@ -6,6 +6,7 @@ import org.apache.struts2.ServletActionContext;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 
 public class DownloadFileAction extends EmpBaseAction {
     // 代表下载文件ID的成员变量
@@ -47,6 +48,13 @@ public class DownloadFileAction extends EmpBaseAction {
     }
 
     public String getFileName() {
-        return file.getName();
+        String downFileName = file.getName();
+        try {
+            downFileName = new String(downFileName.getBytes(), "ISO8859-1");
+        }
+        catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return downFileName;
     }
 }

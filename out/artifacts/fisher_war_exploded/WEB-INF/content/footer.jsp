@@ -18,7 +18,7 @@
     <tr>
         <td height="86" background="${pageContext.request.contextPath}/images/bodybg.jpg">
             <p align="center" class="pt11">
-                All Rights Reserved.&copy; AK
+                All Rights Reserved.
                 <br/>
             </p>
         </td>

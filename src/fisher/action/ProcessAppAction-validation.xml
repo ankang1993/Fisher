@@ -17,9 +17,5 @@
 		<field-validator type="requiredstring">
 			<message>申请理由必填！</message>
 		</field-validator>
-		<field-validator type="regex">
-			<param name="regex"><![CDATA[(\w{6,})]]></param>
-			<message>申请理由的长度必须在大于6个字符</message>
-		</field-validator>
 	</field>
 </validators>

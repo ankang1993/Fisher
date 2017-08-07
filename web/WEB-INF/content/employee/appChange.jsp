@@ -42,6 +42,7 @@
                     <tr>
                         <td colspan="2">
                             <s:submit value="提交申请" theme="simple"/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
                             <s:reset theme="simple" value="重新填写"/>
                         </td>
                     </tr>
