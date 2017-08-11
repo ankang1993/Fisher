@@ -57,6 +57,7 @@ public class LoginAction extends EmpBaseAction {
                         , manager.getName());
                 ctx.getSession().put(WebConstant.LEVEL
                         , WebConstant.MGR_LEVEL);
+                addActionMessage(getText("login.success"));
                 return MGR_RESULT;
             }
             // 用户名和密码不匹配

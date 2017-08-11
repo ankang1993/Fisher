@@ -11,7 +11,7 @@
 <%@include file="../header.jsp" %>
 <%@include file="mgrheader.jsp" %>
 <table width="960" align="center"
-       background="images/bodybg.jpg">
+       background="${pageContext.request.contextPath}/images/bodybg.jpg">
     <tr height="60">
         <td>&nbsp;</td>
     </tr>

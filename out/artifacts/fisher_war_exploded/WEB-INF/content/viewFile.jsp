@@ -20,28 +20,7 @@
        background="${pageContext.request.contextPath}/images/bodybg.jpg">
     <tr>
         <td>
-            <table width=80% border=0 align="center"
-                   cellspacing="1" bgcolor="#cccccc">
-                <tr bgcolor="#e1e1e1">
-                    <td colspan="3">
-                        <div class="mytitle">
-                            <%--上传文件--%>
-                            <a href="upload.action">上传文件</a>
-                        </div>
-                    </td>
-                </tr>
-                <%--<tr>--%>
-                    <%--<td colspan="1">--%>
-                        <%--大小限制为100M以内--%>
-                    <%--</td>--%>
-                    <%--<td colspan="2">--%>
-                        <%--<s:form action="uploadFile" enctype="multipart/form-data" method="POST">--%>
-                            <%--<s:file name="myFile" theme="simple" value="选择文件"/>--%>
-                            <%--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>
-                            <%--<s:submit theme="simple" value="上传"/>--%>
-                        <%--</s:form>--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
+            <table width=80% border=0 align="center" cellspacing="1" bgcolor="#cccccc">
                 <tr bgcolor="#e1e1e1">
                     <td colspan="3">
                         <div class="mytitle">查看全部文件</div>

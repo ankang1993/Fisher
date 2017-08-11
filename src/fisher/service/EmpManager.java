@@ -42,7 +42,7 @@ public interface EmpManager {
     // 以上午9~11点之间算迟到
     public static final int LATE_LIMIT = 11;
     // 以下午18点之后算正常下班
-    public static final int LEAVE_LIMIT = 18;
+    public static final int LEAVE_LIMIT = 17;
     // 以上午16~18点之间算迟到
     public static final int EARLY_LIMIT = 16;
 

@@ -74,7 +74,6 @@ public class EmpManagerImpl
      * 自动打卡，周一到周五，早上7：00、中午12：00为每个员工插入旷工记录
      */
     public void autoPunch() {
-        System.out.println("自动插入旷工记录");
         List<Employee> emps = empDao.findAll(Employee.class);
         // 获取当前时间
         String dutyDay = new java.sql.Date(
@@ -165,7 +164,6 @@ public class EmpManagerImpl
         if (attend.getPunchTime() != null) {
             return PUNCHED;
         }
-        System.out.println("============打卡==========");
         // 获取打卡时间
         int punchHour = Calendar.getInstance()
                 .get(Calendar.HOUR_OF_DAY);
@@ -184,11 +182,11 @@ public class EmpManagerImpl
         }
         // 下班打卡
         else {
-            // 18点之后算正常
+            // 17点之后算正常
             if (punchHour >= LEAVE_LIMIT) {
                 attend.setType(typeDao.get(AttendType.class, 1));
             }
-            // 16~18点之间算早退
+            // 16~17点之间算早退
             else if (punchHour >= EARLY_LIMIT) {
                 attend.setType(typeDao.get(AttendType.class, 5));
             }
@@ -237,9 +235,6 @@ public class EmpManagerImpl
      */
     public boolean addApplication(int attId, int typeId
             , String reason) {
-        System.out.println("--------------" + attId);
-        System.out.println("~~~~" + typeId);
-        System.out.println("~~~~" + reason);
         // 创建一个申请
         Application app = new Application();
         // 获取申请需要改变的出勤记录
@@ -250,7 +245,6 @@ public class EmpManagerImpl
         if (reason != null) {
             app.setReason(reason);
         }
-        System.out.println("====添加申请====");
         appDao.save(app);
         return true;
     }

@@ -12,6 +12,9 @@
             <div align="center"><a href="editPass.action">修改密码</a></div>
         </td>
         <td>
+            <div align="center"><a href="upload.action">上传文件</a></div>
+        </td>
+        <td>
             <div align="center"><a href="viewFile.action">查看文件</a></div>
         </td>
         <td>

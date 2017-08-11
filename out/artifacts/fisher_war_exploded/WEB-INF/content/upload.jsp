@@ -5,25 +5,20 @@
 <html>
 <head>
     <title>上传文件</title>
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-    <meta http-equiv="description" content="This is my page">
-    <link rel="stylesheet" type="text/css" href="../../js/uploadify.css">
-    <script type="text/javascript" src="../../js/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="../../js/jquery.uploadify.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jquery/uploadify.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/jquery.uploadify.min.js"></script>
     <script type="text/javascript">
         $(function(){
             $("#myFile").uploadify({
 //                'debug'     : true, //开启调试
                 'auto'           : false, //是否自动上传
-                'swf'            : '../../js/uploadify.swf',  //引入uploadify.swf
+                'swf'            : '${pageContext.request.contextPath}/jquery/uploadify.swf',  //引入uploadify.swf
                 'uploader'       : 'uploadFile',//请求路径
                 'queueID'        : 'fileQueue',//队列id,用来展示上传进度的
                 'width'     : '75',  //按钮宽度
                 'height'    : '24',  //按钮高度
-                'queueSizeLimit' : 5,  //同时上传文件的个数
+                'queueSizeLimit' : 100,  //同时上传文件的个数
                 'multi'          : true,  //允许多文件上传
                 'buttonText'     : '浏览文件',//按钮上的文字
                 'fileSizeLimit' : '1000MB', //设置单个文件大小限制
@@ -60,20 +55,27 @@
                 <tr bgcolor="#e1e1e1">
                     <td colspan="3">
                         <div class="mytitle">
-                            上传文件（最多同时上传5个）
+                            上传文件
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <input type="file" id="myFile" name="myFile">
-                        <div id="fileQueue"></div>
                     </td>
                     <td>
                         <a href="javascript:$('#myFile').uploadify('upload','*')">开始上传</a>
                     </td>
                     <td>
-                        <a href="javascript:$('#myFile').uploadify('cancel')">取消所有上传</a>
+                        <a href="javascript:$('#myFile').uploadify('cancel','*')">取消所有上传</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        文件队列
+                    </td>
+                    <td colspan="2">
+                        <div id="fileQueue"></div>
                     </td>
                 </tr>
             </table>
