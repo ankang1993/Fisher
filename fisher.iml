@@ -14,28 +14,6 @@
         <configuration>
           <fileset id="s2fileset" name="Default File Set " removed="false">
             <file>file://$MODULE_DIR$/src/struts.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-rest-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-cdi-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-pell-multipart-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-bean-validation-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-config-browser-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-convention-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-portlet-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-core-2.5.12.jar!/struts-default.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-embeddedjsp-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-osgi-demo-bundle-2.5.12.jar!/struts.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-json-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-oval-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-plexus-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-jasperreports-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-tiles-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-spring-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-osgi-admin-bundle-2.5.12.jar!/struts.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-gxp-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-jfreechart-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-javatemplates-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-osgi-plugin-2.5.12.jar!/struts-plugin.xml</file>
-            <file>jar://C:/struts-2.5.12/lib/struts2-sitemesh-plugin-2.5.12.jar!/struts-plugin.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
@@ -52,7 +30,6 @@
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="DaoContext" removed="false">
-          <file>file://$MODULE_DIR$/web/WEB-INF/daoContext.xml</file>
           <file>file://$MODULE_DIR$/web/WEB-INF/applicationContext.xml</file>
         </fileset>
       </configuration>

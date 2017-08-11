@@ -7,10 +7,10 @@
 <struts>
     <!-- 配置了系列常量 -->
     <constant name="struts.custom.i18n.resources" value="resource"/>
-    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.i18n.encoding" value="UTF-8" />
     <constant name="struts.devMode" value="true"/>
-    <constant name="struts.multipart.maxSize" value="104857600"/>
-    <constant name="struts.multipart.saveDir" value="/WEB-INF/tmp"/>
+    <constant name="struts.multipart.maxSize" value="1048576000"/>
+    <!--<constant name="struts.multipart.saveDir" value="/WEB-INF/tmp"/>-->
     <package name="default" extends="struts-default">
         <interceptors>
             <!-- 配置普通员工角色的权限检查拦截器 -->
@@ -145,15 +145,19 @@
                 <param name="bufferSize">2048</param>
             </result>
         </action>
+        <!-- 进入上传文件页面的Action -->
+        <action name="upload">
+            <interceptor-ref name="basicStack"/>
+            <interceptor-ref name="empAuth"/>
+            <result>/WEB-INF/content/upload.jsp</result>
+        </action>
         <!-- 上传文件的Action -->
         <action name="uploadFile"
                 class="fisher.action.UploadFileAction">
             <interceptor-ref name="basicStack"/>
             <interceptor-ref name="fileUploadStack"/>
             <interceptor-ref name="empAuth"/>
-            <result type="redirectAction">
-                <param name="actionName">viewFile</param>
-            </result>
+            <result>/WEB-INF/content/upload.jsp</result>
         </action>
         <!-- 删除文件的Action -->
         <action name="deleteFile"

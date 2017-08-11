@@ -21,11 +21,12 @@
             </s:if>
             <s:actionerror cssClass="error"/>
             <div align="center">
-                <s:form action="processAdd">
+                <s:form action="processAdd" validate="true" method="POST">
                     <s:textfield name="emp.name" label="用户名"/>
+                    <s:textfield name="emp.realname" label="真实姓名"/>
                     <s:password name="emp.pass" label="密码"/>
-                    <s:password name="confimpass" label="确认密码"/>
-                    <s:textfield name="emp.phone" label="电话"/>
+                    <s:password name="confirmpass" label="确认密码"/>
+                    <s:textfield name="emp.phone" label="手机号"/>
                     <tr>
                         <td colspan="2">
                             <s:submit value="注册" theme="simple"/>&nbsp;&nbsp;&nbsp;&nbsp;<s:reset theme="simple" value="重填"/>

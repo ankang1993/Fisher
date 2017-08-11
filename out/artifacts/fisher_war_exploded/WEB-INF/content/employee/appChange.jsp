@@ -17,7 +17,7 @@
     <tr>
         <td>
             <div align="center">
-                <s:form action="processApp">
+                <s:form action="processApp" method="POST">
                     <tr bgcolor="#e1e1e1">
                         <td colspan="2">
                             <div class="mytitle">

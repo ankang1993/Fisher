@@ -48,7 +48,7 @@ public class LoginAction extends EmpBaseAction {
                         , manager.getName());
                 ctx.getSession().put(WebConstant.LEVEL
                         , WebConstant.EMP_LEVEL);
-                addActionMessage("You have successfully logged in.");
+                addActionMessage(getText("login.success"));
                 return EMP_RESULT;
             }
             // 登录结果为经理
@@ -61,12 +61,12 @@ public class LoginAction extends EmpBaseAction {
             }
             // 用户名和密码不匹配
             else {
-                addActionMessage("Wrong Account or Password");
+                addActionMessage(getText("userPass.wrong"));
                 return ERROR;
             }
         }
         // 验证码不匹配
-        addActionMessage("Wrong Identifying Code");
+        addActionMessage(getText("code.wrong"));
         return ERROR;
     }
 }

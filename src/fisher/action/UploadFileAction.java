@@ -62,7 +62,6 @@ public class UploadFileAction extends EmpBaseAction {
         fos.close();
         fis.close();
         mgr.uploadFile(getMyFileFileName(), name, getMyFileContentType());
-        addActionMessage("Upload SUCCESSFULLY.");
         return SUCCESS;
     }
 }

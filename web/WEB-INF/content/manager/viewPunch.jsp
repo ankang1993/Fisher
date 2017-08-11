@@ -17,18 +17,19 @@
         <td>
             <table width="80%" border="0" align="center" bgcolor="#cccccc">
                 <tr bgcolor="#e1e1e1">
-                    <td colspan="4">
+                    <td colspan="5">
                         <div class="mytitle">查看员工打卡情况</div>
                     </td>
                 </tr>
                 <tr bgcolor="#e1e1e1">
-                    <td colspan="4">您只能查看全部员工最近七天的非正常打卡。</td>
+                    <td colspan="5">您只能查看全部员工最近七天的非正常打卡。</td>
                 </tr>
                 <tr class="pt11" height="45">
-                    <td width="29%"><b>成员名</b></td>
-                    <td width="29%"><b>打卡日期</b></td>
-                    <td width="20%"><b>异动名称</b></td>
-                    <td width="26%"><b>打卡时间</b></td>
+                    <td><b>用户名</b></td>
+                    <td><b>姓名</b></td>
+                    <td><b>打卡日期</b></td>
+                    <td><b>异动名称</b></td>
+                    <td><b>打卡时间</b></td>
                 </tr>
                 <s:iterator value="punchs" status="index">
                     <s:if test="#index.odd == true">
@@ -38,6 +39,7 @@
                         <tr class="pt11" height="32">
                     </s:else>
                     <td><s:property value="empName"/></td>
+                    <td><s:property value="empRealName"/></td>
                     <td><s:property value="dutyDay"/></td>
                     <td><s:property value="unType"/></td>
                     <td><s:property value="time"/></td>

@@ -212,7 +212,7 @@ public class EmpManagerImpl
         List<AttendBean> result = new ArrayList<AttendBean>();
         // 封装VO集合
         for (Attend att : attends) {
-            result.add(new AttendBean(att.getId(), empName, att.getDutyDay()
+            result.add(new AttendBean(att.getId(), empName, emp.getRealname(), att.getDutyDay()
                     , att.getType().getName(), att.getPunchTime()));
         }
         return result;

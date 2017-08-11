@@ -19,7 +19,6 @@ public class DeleteFileAction extends EmpBaseAction {
             throws Exception {
         // É¾³ýÎÄ¼þ
         mgr.deleteFile(fileId);
-        addActionMessage("DELETE SUCCESSFULLY.");
         return SUCCESS;
     }
 }

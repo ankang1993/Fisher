@@ -21,7 +21,7 @@
             </s:if>
             <s:actionerror cssClass="error"/>
             <div align="center">
-                <s:form action="processLogin">
+                <s:form action="processLogin" validate="true" method="POST">
                     <s:textfield name="manager.name" label="用户名"/>
                     <s:password name="manager.pass" label="密码"/>
                     <s:textfield name="vercode" label="验证码"/>

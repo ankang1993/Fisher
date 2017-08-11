@@ -18,26 +18,23 @@
 			<message>密码必填！</message>
 		</field-validator>
 		<field-validator type="regex">
-			<param name="regex"><![CDATA[(\w{4,25})]]></param>
-			<message>您输入的密码只能是字母和数字，且长度必须在4到25之间</message>
+			<param name="regex"><![CDATA[(\w{6,25})]]></param>
+			<message>您输入的密码只能是字母和数字，且长度必须在6到25之间</message>
 		</field-validator>
 	</field>
-	<field name="confimpass">
-		<field-validator type="requiredstring">
-			<message>确认密码必填！</message>
-		</field-validator>
-		<field-validator type="regex">
-			<param name="regex"><![CDATA[(\w{4,25})]]></param>
-			<message>您输入的密码只能是字母和数字，且长度必须在4到25之间</message>
+	<field name="confirmpass">
+		<field-validator type="fieldexpression">
+			<param name="expression"><![CDATA[(confirmpass == emp.pass)]]></param>
+			<message>您输入的密码必须和确认密码一致</message>
 		</field-validator>
 	</field>
 	<field name="emp.phone">
 		<field-validator type="requiredstring">
-			<message>电话必填！</message>
+			<message>手机号必填！</message>
 		</field-validator>
-		<!--<field-validator type="regex">-->
-			<!--<param name="regex"><![CDATA[(\w{4,25})]]></param>-->
-			<!--<message>您输入的电话只能是字母和数字，且长度必须在4到25之间</message>-->
-		<!--</field-validator>-->
+		<field-validator type="regex">
+			<param name="regex"><![CDATA[(1\d{10})]]></param>
+			<message>您输入的手机号只能是数字，且长度必须为11位</message>
+		</field-validator>
 	</field>
 </validators>

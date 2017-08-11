@@ -24,7 +24,6 @@ public class DeleteEmpAction extends MgrBaseAction {
         String mgrName = (String) ctx.getSession().get(WebConstant.USER);
         // É¾³ýÔ±¹¤
         mgr.deleteEmp(empId, mgrName);
-        addActionMessage("DELETE SUCCESSFULLY.");
         return SUCCESS;
     }
 }

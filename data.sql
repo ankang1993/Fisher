@@ -17,6 +17,7 @@ create table employee_inf
  emp_id int auto_increment,
  emp_type int,
  emp_name varchar(50) not null,
+ emp_realname varchar(50) not null,
  emp_pass varchar(50) not null,
  emp_phone varchar(50) not null,
  mgr_id int,
@@ -88,9 +89,9 @@ insert into attend_type_inf ( type_name , amerce_amount)
 	values ( '出差', 10);
 
 # 插入经理
-insert into employee_inf (emp_type , emp_name , emp_pass , emp_phone , mgr_id , dept_name)
-	values (2, 'admin', 'admin' , '010-1234567' , null , 'FNL');
+insert into employee_inf (emp_type , emp_name , emp_realname , emp_pass , emp_phone , mgr_id , dept_name)
+	values (2, 'admin', 'BOSS', 'admin' , '010-1234567' , null , 'AK');
 # 员工
-insert into employee_inf (emp_type , emp_name , emp_pass , emp_phone , mgr_id)
-	values (1 , 'test', 'test' , '155555555555' , 1);
+insert into employee_inf (emp_type , emp_name , emp_realname , emp_pass , emp_phone , mgr_id)
+	values (1 , 'test', '测试', 'test' , '155555555555' , 1);
 

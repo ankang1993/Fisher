@@ -27,7 +27,7 @@
             </s:if>
             <s:actionerror cssClass="error"/>
             <div align="center">
-                <s:form action="editPassword">
+                <s:form action="editPassword" validate="true" method="POST">
                     <s:password name="originalPass" label="原密码"/>
                     <s:password name="newPass" label="新密码"/>
                     <s:password name="confirmPass" label="确认密码"/>

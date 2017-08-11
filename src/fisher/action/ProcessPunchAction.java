@@ -39,13 +39,13 @@ public class ProcessPunchAction extends ActionSupport {
         int result = empMgr.punch(user, dutyDay, isCome);
         switch (result) {
             case 0:
-                addActionMessage("Punch failure.");
+                addActionMessage(getText("punch.fail"));
                 break;
             case 1:
-                addActionMessage("You have punched.");
+                addActionMessage(getText("punch.before"));
                 break;
             case 2:
-                addActionMessage("Punch successfully.");
+                addActionMessage(getText("punch.success"));
                 break;
         }
         return SUCCESS;

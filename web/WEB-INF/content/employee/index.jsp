@@ -19,7 +19,7 @@
         <td>
             <s:if test="actionMessages.size()>0">
                 <div class="error">
-                <s:actionmessage/>
+                    <s:actionmessage/>
                 </div>
             </s:if>
         </td>

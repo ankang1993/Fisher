@@ -24,12 +24,15 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // 标识属性
     private Integer id;
-    // 员工姓名
+    // 员工用户名
     @Column(name = "emp_name", nullable = false, length = 50, unique = true)
     private String name;
     // 员工密码
     @Column(name = "emp_pass", nullable = false, length = 50)
     private String pass;
+    // 员工姓名
+    @Column(name = "emp_realname", nullable = false, length = 50)
+    private String realname;
     // 员工电话
     @Column(name = "emp_phone", nullable = false, length = 50)
     private String phone;
@@ -47,11 +50,12 @@ public class Employee implements Serializable {
 
     // 初始化全部成员变量的构造器
     public Employee(Integer id, String name, String pass,
-                    String phone, Manager manager,
+                    String realname, String phone, Manager manager,
                     Set<Attend> attends) {
         this.id = id;
         this.name = name;
         this.pass = pass;
+        this.realname = realname;
         this.phone = phone;
         this.manager = manager;
         this.attends = attends;
@@ -82,6 +86,15 @@ public class Employee implements Serializable {
 
     public String getPass() {
         return this.pass;
+    }
+
+    // realname的setter和getter方法
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
     }
 
     // salary的setter和getter方法

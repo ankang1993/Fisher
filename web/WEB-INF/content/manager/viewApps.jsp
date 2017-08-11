@@ -21,12 +21,13 @@
         <td><br>
             <table width="80%" border="0" align="center" bgcolor="#cccccc">
                 <tr bgcolor="#e1e1e1">
-                    <td colspan="5">
+                    <td colspan="6">
                         <div class="mytitle">处理申请</div>
                     </td>
                 </tr>
                 <tr class="pt11" height="45">
-                    <td><b>成员名</b></td>
+                    <td><b>用户名</b></td>
+                    <td><b>姓名</b></td>
                     <td><b>缺勤类型</b></td>
                     <td><b>申请类型</b></td>
                     <td><b>理由</b></td>
@@ -39,12 +40,13 @@
                     <s:else>
                         <tr class="pt11" height="32">
                     </s:else>
-                    <td><s:property value="emp"/></td>
+                    <td><s:property value="empName"/></td>
+                    <td><s:property value="empRealName"/></td>
                     <td><s:property value="unAttend"/></td>
                     <td><s:property value="toAttend"/></td>
                     <td><s:property value="reason"/></td>
                     <td>
-                        <a href='check.action?result=pass&appid=<s:property value="id"/>'>通过</a>&nbsp;&nbsp;
+                        <a href='check.action?result=pass&appid=<s:property value="id"/>'>通过</a>&nbsp;
                         <a href='check.action?result=deny&appid=<s:property value="id"/>'>拒绝</a>
                     </td>
                     </tr>

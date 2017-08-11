@@ -7,6 +7,7 @@ public class AttendBean implements Serializable {
     private static final long serialVersionUID = 48L;
     private int id;
     private String empName;
+    private String empRealName;
     private String dutyDay;
     private String unType;
     private Date time;
@@ -16,10 +17,11 @@ public class AttendBean implements Serializable {
     }
 
     // 初始化全部成员变量的构造器
-    public AttendBean(int id, String empName, String dutyDay
+    public AttendBean(int id, String empName, String empRealName, String dutyDay
             , String unType, Date time) {
         this.id = id;
         this.empName = empName;
+        this.empRealName = empRealName;
         this.dutyDay = dutyDay;
         this.unType = unType;
         this.time = time;
@@ -41,6 +43,15 @@ public class AttendBean implements Serializable {
 
     public void setEmpName(String empName) {
         this.empName = empName;
+    }
+
+    //empRealName的setter和getter方法
+    public String getEmpRealName() {
+        return empRealName;
+    }
+
+    public void setEmpRealName(String empRealName) {
+        this.empRealName = empRealName;
     }
 
     // dutyDay的setter和getter方法

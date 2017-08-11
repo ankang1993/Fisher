@@ -45,9 +45,9 @@ public class ProcessAppAction extends EmpBaseAction {
         boolean result = mgr.addApplication(attId, typeId, reason);
         // 如果申请成功
         if (result) {
-            addActionMessage("You have applied successfully, please wait.");
+            addActionMessage(getText("app.success"));
         } else {
-            addActionMessage("You have applied before, please wait.");
+            addActionMessage(getText("app.before"));
         }
         return SUCCESS;
     }

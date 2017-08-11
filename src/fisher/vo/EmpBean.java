@@ -6,6 +6,7 @@ public class EmpBean implements Serializable {
     private static final long serialVersionUID = 48L;
     private int empId;
     private String empName;
+    private String empRealName;
     private String empPass;
     private String phone;
 
@@ -15,9 +16,10 @@ public class EmpBean implements Serializable {
     }
 
     // 初始化全部成员变量的构造器
-    public EmpBean(int empId, String empName, String empPass, String phone) {
+    public EmpBean(int empId, String empName, String empRealName, String empPass, String phone) {
         this.empId = empId;
         this.empName = empName;
+        this.empRealName = empRealName;
         this.empPass = empPass;
         this.phone = phone;
     }
@@ -40,6 +42,15 @@ public class EmpBean implements Serializable {
         return this.empName;
     }
 
+    // empRealName的setter和getter方法
+    public String getEmpRealName() {
+        return empRealName;
+    }
+
+    public void setEmpRealName(String empRealName) {
+        this.empRealName = empRealName;
+    }
+
     // empPass的setter和getter方法
     public void setEmpPass(String empPass) {
         this.empPass = empPass;
@@ -57,5 +68,4 @@ public class EmpBean implements Serializable {
     public String getPhone() {
         return this.phone;
     }
-
 }

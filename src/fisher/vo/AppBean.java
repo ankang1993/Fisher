@@ -6,7 +6,8 @@ public class AppBean implements Serializable {
     private static final long serialVersionUID = 48L;
 
     private int id;
-    private String emp;
+    private String empName;
+    private String empRealName;
     private String unAttend;
     private String toAttend;
     private String reason;
@@ -17,10 +18,11 @@ public class AppBean implements Serializable {
     }
 
     // 初始化全部成员变量的构造器
-    public AppBean(int id, String emp, String unAttend
+    public AppBean(int id, String empName, String empRealName, String unAttend
             , String toAttend, String reason) {
         this.id = id;
-        this.emp = emp;
+        this.empName = empName;
+        this.empRealName = empRealName;
         this.unAttend = unAttend;
         this.toAttend = toAttend;
         this.reason = reason;
@@ -35,13 +37,22 @@ public class AppBean implements Serializable {
         return this.id;
     }
 
-    // emp的setter和getter方法
-    public void setEmp(String emp) {
-        this.emp = emp;
+    // empName的setter和getter方法
+    public void setEmpName(String empName) {
+        this.empName = empName;
     }
 
-    public String getEmp() {
-        return this.emp;
+    public String getEmpName() {
+        return this.empName;
+    }
+
+    // empRealName的setter和getter方法
+    public void setEmpRealName(String empRealName) {
+        this.empRealName = empRealName;
+    }
+
+    public String getEmpRealName() {
+        return this.empRealName;
     }
 
     // unAttend的setter和getter方法

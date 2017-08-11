@@ -103,7 +103,7 @@ public class MgrManagerImpl
         }
         for (Employee e : emps) {
             result.add(new EmpBean(e.getId(), e.getName(),
-                    e.getPass(), e.getPhone()));
+                    e.getRealname(), e.getPass(), e.getPhone()));
         }
         return result;
     }
@@ -136,7 +136,7 @@ public class MgrManagerImpl
                     if (app.getResult() == false) {
                         Attend attend = app.getAttend();
                         result.add(new AppBean(app.getId(),
-                                e.getName(), attend.getType().getName(),
+                                e.getName(), e.getRealname(), attend.getType().getName(),
                                 app.getType().getName(), app.getReason()));
                     }
                 }
@@ -210,7 +210,7 @@ public class MgrManagerImpl
             List<AttendBean> list = new ArrayList<AttendBean>();
             // 封装VO集合
             for (Attend att : attends) {
-                list.add(new AttendBean(att.getId(), e.getName(), att.getDutyDay()
+                list.add(new AttendBean(att.getId(), e.getName(), e.getRealname(), att.getDutyDay()
                         , att.getType().getName(), att.getPunchTime()));
             }
             if (list.size() > 0) result.addAll(list);

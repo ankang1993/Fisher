@@ -51,15 +51,15 @@ public class EditPasswordAction extends EmpBaseAction {
         if (mgrName == null) return "login";
         // 添加新用户
         if (!confirmPass.equals(newPass)) {
-            addActionMessage("Password Inconsistency.");
+            addActionMessage(getText("password.inconsis"));
             return "failure";
         }
         String res = mgr.editPassword(mgrName, newPass, originalPass);
         if (res.equals("passwrong")) {
-            addActionMessage("Password Wrong.");
+            addActionMessage(getText("password.wrong"));
             return "failure";
         }
-        addActionMessage("EDIT SUCCESSFULLY.");
+        addActionMessage(getText("edit.success"));
         return SUCCESS;
     }
 }
