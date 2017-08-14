@@ -15,8 +15,19 @@
     <tr>
         <td>
             <br>
-            <table width="80%" border="0" align="center"
-                   cellspacing="1" bgcolor="#cccccc">
+            <table width="80%" border="0" align="center" cellspacing="1" bgcolor="#cccccc">
+                <tr bgcolor="#e1e1e1">
+                    <td colspan="3">
+                        <div class="mytitle">查询成员</div>
+                    </td>
+                    <td colspan="2">
+                        <s:form action="searchEmp" theme="simple">
+                            <s:textfield name="name" label="姓名"/>
+                            &nbsp;&nbsp;
+                            <s:submit value="搜索"/>
+                        </s:form>
+                    </td>
+                </tr>
                 <tr bgcolor="#e1e1e1">
                     <td colspan="5">
                         <div class="mytitle">您正在查看全部成员</div>

@@ -128,6 +128,13 @@
             <interceptor-ref name="empAuth"/>
             <result>/WEB-INF/content/viewFile.jsp</result>
         </action>
+        <!-- 查看查询文件的Action -->
+        <action name="searchFile"
+                class="fisher.action.ViewFileAction" method="search">
+            <interceptor-ref name="basicStack"/>
+            <interceptor-ref name="empAuth"/>
+            <result>/WEB-INF/content/viewFile.jsp</result>
+        </action>
         <!-- 下载文件的Action -->
         <action name="downloadFile"
                 class="fisher.action.DownloadFileAction">
@@ -186,6 +193,13 @@
         <!-- 经理查看员工 -->
         <action name="viewEmp"
                 class="fisher.action.ViewEmpAction">
+            <interceptor-ref name="basicStack"/>
+            <interceptor-ref name="mgrAuth"/>
+            <result>/WEB-INF/content/manager/viewEmp.jsp</result>
+        </action>
+        <!-- 经理查询员工 -->
+        <action name="searchEmp"
+                class="fisher.action.ViewEmpAction" method="search">
             <interceptor-ref name="basicStack"/>
             <interceptor-ref name="mgrAuth"/>
             <result>/WEB-INF/content/manager/viewEmp.jsp</result>

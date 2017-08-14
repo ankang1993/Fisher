@@ -112,6 +112,15 @@ public interface EmpManager {
     List<FileBean> getFiles(String mgr);
 
     /**
+     * 根据经理返回符合名字要求的文件
+     *
+     * @param mgr 经理名
+     * @param name 文件名
+     * @return 符合名字要求的全部文件
+     */
+    List<FileBean> getFilesByName(String mgr, String name);
+
+    /**
      * 下载指定文件
      *
      * @param fileId 文件ID

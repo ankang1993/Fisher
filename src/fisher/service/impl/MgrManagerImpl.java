@@ -57,12 +57,9 @@ public class MgrManagerImpl
             throw new HrException("Are you Boss? Or do you have logged in?");
         }
         List<Employee> emps = empDao.findAll(Employee.class);
-        for (Employee e : emps) {
-            if (e.getName().equals(emp.getName())) return "duplicate";
-        }
+        if (emps.contains(emp)) return "duplicate";
         emp.setManager(m);
         empDao.save(emp);
-        emps.add(emp);
         return "success";
     }
 
@@ -104,6 +101,35 @@ public class MgrManagerImpl
         for (Employee e : emps) {
             result.add(new EmpBean(e.getId(), e.getName(),
                     e.getRealname(), e.getPass(), e.getPhone()));
+        }
+        return result;
+    }
+
+    /**
+     * 根据员工名返回经理部门的同名员工
+     *
+     * @param mgr 经理名
+     * @param name 员工名
+     * @return 对应的员工
+     */
+    public List<EmpBean> getEmpsByName(String mgr,String name) throws HrException {
+        Manager m = mgrDao.findByName(mgr);
+        if (m == null) {
+            throw new HrException("Are you Boss? Or do you have logged in?");
+        }
+        //查询该经理对应的全部员工
+        Set<Employee> emps = m.getEmployees();
+        //封装VO集
+        List<EmpBean> result = new ArrayList<EmpBean>();
+        //部门依然没有员工
+        if (emps == null || emps.size() < 1) {
+            return result;
+        }
+        for (Employee e : emps) {
+            if (e.getRealname().equals(name)) {
+                result.add(new EmpBean(e.getId(), e.getName(),
+                        e.getRealname(), e.getPass(), e.getPhone()));
+            }
         }
         return result;
     }

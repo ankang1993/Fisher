@@ -34,6 +34,15 @@ public interface MgrManager {
     List<EmpBean> getEmpsByMgr(String mgr);
 
     /**
+     * 根据员工名返回经理部门的同名员工
+     *
+     * @param mgr 经理名
+     * @param name 员工名
+     * @return 对应的员工
+     */
+    List<EmpBean> getEmpsByName(String mgr,String name);
+
+    /**
      * 根据经理返回该部门的没有批复的申请
      *
      * @param mgr 经理名

@@ -269,6 +269,29 @@ public class EmpManagerImpl
     }
 
     /**
+     * 根据经理返回符合名字要求的文件
+     *
+     * @param mgr 经理名
+     * @param name 文件名
+     * @return 符合名字要求的全部文件
+     */
+    public List<FileBean> getFilesByName(String mgr, String name) throws HrException {
+        Employee m = empDao.findByName(mgr);
+        if (m == null) {
+            throw new HrException("Do you have logged in?");
+        }
+        List<File> files = fileDao.findAll(File.class);
+        //封装VO集
+        List<FileBean> result = new ArrayList<FileBean>();
+        for (File f : files) {
+            if (f.getName().contains(name)) {
+                result.add(new FileBean(f.getName(), f.getId()));
+            }
+        }
+        return result;
+    }
+
+    /**
      * 下载指定文件
      *
      * @param fileId 文件名

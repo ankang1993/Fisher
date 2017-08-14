@@ -22,6 +22,18 @@
         <td>
             <table width=80% border=0 align="center" cellspacing="1" bgcolor="#cccccc">
                 <tr bgcolor="#e1e1e1">
+                    <td colspan="1">
+                        <div class="mytitle">查询文件</div>
+                    </td>
+                    <td colspan="2">
+                        <s:form action="searchFile" theme="simple">
+                            <s:textfield name="name" label="名字"/>
+                            &nbsp;&nbsp;
+                            <s:submit value="搜索"/>
+                        </s:form>
+                    </td>
+                </tr>
+                <tr bgcolor="#e1e1e1">
                     <td colspan="3">
                         <div class="mytitle">查看全部文件</div>
                     </td>

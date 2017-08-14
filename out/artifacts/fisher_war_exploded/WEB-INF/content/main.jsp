@@ -19,7 +19,7 @@
             <br>
             <p align="center">
                 <span class="pt11">
-                    这仅仅是一个简单的Java EE框架程序,使用了轻量级Java EE架构，包括：Struts 2.3、Spring 4.0、Hibernate 4.3、Quartz 2.2、Jquery·Uploadify。<br>
+                    这仅仅是一个简单的Java EE框架程序，使用了轻量级Java EE架构，包括：Struts 2.3、Spring 4.0、Hibernate 4.3、Quartz 2.2、Jquery·Uploadify。<br>
                     应用模拟了一个简单的工作系统，系统包含两个角色：<br>
                     普通员工的功能包括员工出勤打卡、查看打卡异动、人事异动申请、修改密码、上传文件、查看文件、退出系统；<br>
                     BOSS的功能包括查看员工打卡异动、签核员工异动申请、管理部门员工、修改密码、上传文件、查看文件、退出系统。
