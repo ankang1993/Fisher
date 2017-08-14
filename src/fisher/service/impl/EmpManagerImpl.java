@@ -285,9 +285,9 @@ public class EmpManagerImpl
         List<File> files = fileDao.findAll(File.class);
         //封装VO集
         List<FileBean> result = new ArrayList<FileBean>();
-        for (File f : files) {
-            if (f.getName().contains(name)) {
-                result.add(new FileBean(f.getName(), f.getId()));
+        for (int i = files.size() - 1; i >= 0; i--) {
+            if (files.get(i).getName().contains(name)) {
+                result.add(new FileBean(files.get(i).getName(), files.get(i).getId()));
             }
         }
         return result;
