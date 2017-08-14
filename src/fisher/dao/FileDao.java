@@ -3,6 +3,7 @@ package fisher.dao;
 import fisher.domain.File;
 
 import java.io.Serializable;
+import java.util.List;
 
 public interface FileDao extends BaseDao<File> {
     /**
@@ -12,4 +13,8 @@ public interface FileDao extends BaseDao<File> {
      * @return 符合名字的文件
      */
     File findByName(Serializable id);
+
+    //使用hql 语句进行分页查询操作
+    List<File> findByPage(int pageNo, int pageSize
+            , Object... params);
 }

@@ -250,22 +250,37 @@ public class EmpManagerImpl
     }
 
     /**
+     * 根据经理返回文件总数
+     *
+     * @param mgr 经理名
+     * @return 文件总数
+     */
+    public long getCount(String mgr) throws HrException {
+        Employee m = empDao.findByName(mgr);
+        if (m == null) {
+            throw new HrException("Do you have logged in?");
+        }
+        return fileDao.findCount(File.class);
+    }
+
+    /**
      * 返回全部文件
      *
      * @param mgr 员工名
+     * @param page 页码
      * @return 全部文件
      */
-    public List<FileBean> getFiles(String mgr)
+    public List<FileBean> getFiles(String mgr, int page)
             throws HrException {
         Employee m = empDao.findByName(mgr);
         if (m == null) {
             throw new HrException("Do you have logged in?");
         }
-        List<File> files = fileDao.findAll(File.class);
+        List<File> files = fileDao.findByPage(page, 10);
         //封装VO集
         List<FileBean> result = new ArrayList<FileBean>();
-        for (int i = files.size() - 1; i >= 0; i--) {
-            result.add(new FileBean(files.get(i).getName(), files.get(i).getId()));
+        for (File f : files) {
+            result.add(new FileBean(f.getName(), f.getId()));
         }
         return result;
     }
@@ -285,9 +300,9 @@ public class EmpManagerImpl
         List<File> files = fileDao.findAll(File.class);
         //封装VO集
         List<FileBean> result = new ArrayList<FileBean>();
-        for (int i = files.size() - 1; i >= 0; i--) {
-            if (files.get(i).getName().contains(name)) {
-                result.add(new FileBean(files.get(i).getName(), files.get(i).getId()));
+        for (File f : files) {
+            if (f.getName().contains(name)) {
+                result.add(new FileBean(f.getName(), f.getId()));
             }
         }
         return result;
@@ -333,7 +348,7 @@ public class EmpManagerImpl
         // 返回指定文件对应的真实地址
         String realPath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/files") + "\\" + file.getAddress();
         new java.io.File(realPath).delete();
-        fileDao.delete(file);
+        fileDao.delete(File.class, fileId);
     }
 
     /**

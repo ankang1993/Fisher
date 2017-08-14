@@ -1,0 +1,44 @@
+clear
+close all
+clc
+
+addpath('D:\matlab__workspace\2016613\linux下处理完的数据以及对这些数据进行一些预处理\业务分布');
+
+distibution = xlsread('distribution_0504',1);
+
+Transition_matrix = xlsread('out2',1);
+
+dim_observe = 7;      %观测值维数
+n = dim_observe;
+% filter.A = eye(n);
+filter.B = 0;
+filter.u = 0;
+filter.P = eye(n);
+filter.K = zeros(n);
+filter.H = eye(n);
+
+cQ = 1e-8;
+cR = 1e-2;
+filter.Q = eye(n) * cQ;    %这里简单设置Q和R对角线元素都相等，设为不等亦可
+filter.R = eye(dim_observe) * cR;
+
+filter.x = zeros(n,1); %初始状态x0
+
+out = [];
+z = [];
+for i = 2 : size(Transition_matrix,1)/49
+    for j = 1 : 7
+        filter.A(j,:) = Transition_matrix(((i - 2) * 49 + (j - 1) * 7 + 1) : ((i - 2) * 49 + j * 7),10)';
+    end
+    filter.z = distibution(((i - 1) * 7 + 1) : i * 7,4);
+    filter = Kalman(filter);
+    out = [out filter.x];
+    z = [z filter.z];
+end
+
+for m = 1 : 7  
+    %M个业务相对误差的平均值
+    avg_abs_relative_error(m,:) = abs(out(m,:) - z(m,:))./z(m,:);
+end
+xlswrite('avg_abs_relative_error_2',(sum(avg_abs_relative_error)/dim_observe)',1,'h');
+

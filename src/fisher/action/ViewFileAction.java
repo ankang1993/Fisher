@@ -10,6 +10,10 @@ public class ViewFileAction extends EmpBaseAction {
     private List files;
     //想要查找文件的名字
     private String name;
+    //page
+    private int page;
+    //count
+    private long pageCount;
 
     // files的setter和getter方法
     public void setFiles(List files) {
@@ -27,6 +31,22 @@ public class ViewFileAction extends EmpBaseAction {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public long getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(long pageCount) {
+        this.pageCount = pageCount;
     }
 
     public String search() {
@@ -47,7 +67,13 @@ public class ViewFileAction extends EmpBaseAction {
         // 获取HttpSession中的user属性
         String mgrName = (String) ctx.getSession()
                 .get(WebConstant.USER);
-        setFiles(mgr.getFiles(mgrName));
+        if (pageCount == 0) {
+            long tmp = mgr.getCount(mgrName);
+            if (tmp % 10 == 0) tmp /= 10;
+            else tmp = tmp / 10 + 1;
+            setPageCount(tmp);
+        }
+        setFiles(mgr.getFiles(mgrName, page));
         return SUCCESS;
     }
 }

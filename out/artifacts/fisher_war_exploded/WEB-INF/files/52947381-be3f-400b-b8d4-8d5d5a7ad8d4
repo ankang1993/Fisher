@@ -1,0 +1,61 @@
+clear
+close all
+clc
+
+addpath('C:\Users\delluser\OneDrive\文档\Hsmm\刘硕\code\2016613\linux下处理完的数据以及对这些数据进行一些预处理\业务分布');
+distibution = xlsread('distribution_0505',1);  
+
+Transition_matrix = xlsread('out2',1);
+
+dim_observe = 7;      %观测值维数
+n = dim_observe;
+% filter.A = eye(n);
+filter.B = 0;
+filter.u = 0;
+filter.P = eye(n);
+filter.K = zeros(n);
+filter.H = eye(n);
+
+cQ = 1e-8;
+cR = 1e-2;
+filter.Q = eye(n) * cQ;    %这里简单设置Q和R对角线元素都相等，设为不等亦可
+filter.R = eye(dim_observe) * cR;
+
+filter.x = zeros(n,1); %初始状态x0
+
+out = [];
+z = [];
+for i = 2 : size(Transition_matrix,1)/49
+    for j = 1 : 7
+        %不同的天，要修改Transition_matrix后面的纵坐标
+        filter.A(j,:) = Transition_matrix(((i - 2) * 49 + (j - 1) * 7 + 1) : ((i - 2) * 49 + j * 7),10)';
+    end
+    filter.z = distibution(((i - 1) * 7 + 1) : i * 7,4);
+    filter = Kalman(filter);
+%     plot(filter.x,  'r*');hold on    
+%     plot(filter.z,  'bo');    hold on
+    out = [out filter.x];   %correct之后的输出
+    z = [z filter.z];   %原始输入
+end
+
+figure(1);
+for k = 1 : 7
+    subplot(4,2,k);
+    plot(out(k,:),'-r*','linewidth',1);
+    hold on
+    plot(z(k,:),'-bx','linewidth',1);
+    xlabel(strcat('(',strcat(num2str(k),')')));
+    set(gca,'xtick',[1:17:103]);
+    xlim([1,103]);
+end
+legend('predicted values','measured values');
+
+% figure(2);
+% for m = 1 : 7  
+%     %相对误差
+%     abs_relative_error(m,:) = abs(out(m,:) - z(m,:))./z(m,:);
+%     plot(abs_relative_error(m,:),'linewidth',1);
+%     hold on
+% end
+% xlim([5,103]);
+
