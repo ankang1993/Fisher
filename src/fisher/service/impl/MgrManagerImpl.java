@@ -74,7 +74,6 @@ public class MgrManagerImpl
         if (m == null) {
             throw new HrException("Are you Boss? Or do you have logged in?");
         }
-        Employee emp = empDao.get(Employee.class, empId);
         empDao.delete(Employee.class, empId);
     }
 

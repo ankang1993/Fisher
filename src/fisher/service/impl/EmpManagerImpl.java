@@ -268,15 +268,16 @@ public class EmpManagerImpl
      *
      * @param mgr 员工名
      * @param page 页码
+     * @param pageSize 每页数量
      * @return 全部文件
      */
-    public List<FileBean> getFiles(String mgr, int page)
+    public List<FileBean> getFiles(String mgr, int page, int pageSize)
             throws HrException {
         Employee m = empDao.findByName(mgr);
         if (m == null) {
             throw new HrException("Do you have logged in?");
         }
-        List<File> files = fileDao.findByPage(page, 10);
+        List<File> files = fileDao.findByPage("select e from File e", page, pageSize);
         //封装VO集
         List<FileBean> result = new ArrayList<FileBean>();
         for (File f : files) {

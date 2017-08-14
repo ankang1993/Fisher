@@ -32,9 +32,8 @@ public class FileDaoHibernate4 extends BaseDaoHibernate4<File>
      * @param pageSize 每页需要显示的记录数
      * @return 当前页的所有记录
      */
-    public List<File> findByPage(int pageNo, int pageSize
+    public List<File> findByPage(String hql, int pageNo, int pageSize
             , Object... params) {
-        String hql = "select e from File e";
         // 创建查询
         Query query = getSessionFactory().getCurrentSession()
                 .createQuery(hql);

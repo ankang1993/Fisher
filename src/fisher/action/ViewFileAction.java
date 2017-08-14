@@ -14,6 +14,10 @@ public class ViewFileAction extends EmpBaseAction {
     private int page;
     //count
     private long pageCount;
+    //pageSize
+    private int pageSize = 15;
+    //是否是查询操作
+    private int flag;
 
     // files的setter和getter方法
     public void setFiles(List files) {
@@ -49,6 +53,14 @@ public class ViewFileAction extends EmpBaseAction {
         this.pageCount = pageCount;
     }
 
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
     public String search() {
         if (name == null) return SUCCESS;
         // 创建ActionContext实例
@@ -57,6 +69,7 @@ public class ViewFileAction extends EmpBaseAction {
         String mgrName = (String) ctx.getSession()
                 .get(WebConstant.USER);
         setFiles(mgr.getFilesByName(mgrName, name));
+        setFlag(1);
         return SUCCESS;
     }
 
@@ -69,11 +82,13 @@ public class ViewFileAction extends EmpBaseAction {
                 .get(WebConstant.USER);
         if (pageCount == 0) {
             long tmp = mgr.getCount(mgrName);
-            if (tmp % 10 == 0) tmp /= 10;
-            else tmp = tmp / 10 + 1;
+            if (tmp % pageSize == 0) tmp /= pageSize;
+            else tmp = tmp / pageSize + 1;
             setPageCount(tmp);
         }
-        setFiles(mgr.getFiles(mgrName, page));
+        if (page < 1 || page > pageCount) page = 1;
+        setFiles(mgr.getFiles(mgrName, page, pageSize));
+        setFlag(0);
         return SUCCESS;
     }
 }

@@ -15,6 +15,6 @@ public interface FileDao extends BaseDao<File> {
     File findByName(Serializable id);
 
     //使用hql 语句进行分页查询操作
-    List<File> findByPage(int pageNo, int pageSize
+    List<File> findByPage(String hql, int pageNo, int pageSize
             , Object... params);
 }

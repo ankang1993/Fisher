@@ -57,11 +57,14 @@
                 </s:iterator>
             </table>
             <div>
-                <s:if test="page!=1">
-                    <a href="viewFile.action?page=${page-1}">上一页</a>
-                </s:if>
-                <s:if test="page!=pageCount">
-                    <a href="viewFile.action?page=${page+1}">下一页</a>
+                <s:if test="flag==0">
+                    <s:if test="page!=1">
+                        <a href="viewFile.action?page=${page-1}">上一页</a>
+                    </s:if>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <s:if test="page!=pageCount">
+                        <a href="viewFile.action?page=${page+1}">下一页</a>
+                    </s:if>
                 </s:if>
             </div>
         </td>

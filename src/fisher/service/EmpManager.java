@@ -108,9 +108,10 @@ public interface EmpManager {
      *
      * @param mgr 经理名
      * @param page 页码
+     * @param pageSize 每页数量
      * @return 全部文件
      */
-    List<FileBean> getFiles(String mgr, int page);
+    List<FileBean> getFiles(String mgr, int page, int pageSize);
 
     /**
      * 根据经理返回文件总数
