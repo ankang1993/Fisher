@@ -48,7 +48,7 @@ Spring框架是系统的核心部分，Spring提供的IoC容器是业务逻辑�
 
 ### Hibernate：
 
-Hibernate作为O/R Mapping框架使用，简化了数据库的访问，并在JDBC层提供了更好的封装。
+Hibernate作为O/R Mapping框架使用，简化了数据库的访问，在JDBC层提供了更好的封装，并且程序利用了Hibernate的分页查询功能。
 
 ### Quartz：
 

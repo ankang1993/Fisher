@@ -15,7 +15,7 @@ public class ViewFileAction extends EmpBaseAction {
     //count
     private long pageCount;
     //pageSize
-    private int pageSize = 15;
+    private int pageSize = 20;
     //是否是查询操作
     private int flag;
 
