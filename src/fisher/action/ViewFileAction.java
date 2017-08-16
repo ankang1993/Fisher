@@ -10,11 +10,13 @@ public class ViewFileAction extends EmpBaseAction {
     private List files;
     //想要查找文件的名字
     private String name;
-    //page
+    //第几页
     private int page;
-    //count
+    //页面数量
     private long pageCount;
-    //pageSize
+    //记录数
+    private long count;
+    //每页显示记录数
     private int pageSize = 20;
     //是否是查询操作
     private int flag;
@@ -43,6 +45,14 @@ public class ViewFileAction extends EmpBaseAction {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public long getCount() {
+        return count;
+    }
+
+    public void setCount(long count) {
+        this.count = count;
     }
 
     public long getPageCount() {
@@ -81,11 +91,13 @@ public class ViewFileAction extends EmpBaseAction {
         String mgrName = (String) ctx.getSession()
                 .get(WebConstant.USER);
         if (pageCount == 0) {
-            long tmp = mgr.getCount(mgrName);
-            if (tmp % pageSize == 0) tmp /= pageSize;
+            count = mgr.getCount(mgrName);
+            long tmp = 0;
+            if (count % pageSize == 0) tmp /= pageSize;
             else tmp = tmp / pageSize + 1;
             setPageCount(tmp);
         }
+        if (pageCount == 0) pageCount = 1;
         if (page < 1 || page > pageCount) page = 1;
         setFiles(mgr.getFiles(mgrName, page, pageSize));
         setFlag(0);

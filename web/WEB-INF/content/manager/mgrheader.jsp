@@ -21,7 +21,7 @@
             <div align="center"><a href="upload.action">上传文件</a></div>
         </td>
         <td>
-        <div align="center"><a href="viewFile.action?page=1">查看文件</a></div>
+        <div align="center"><a href="viewFile.action">查看文件</a></div>
         </td>
         <%--<td width="94">--%>
             <%--<div align="center"><a href="addEmp.action">新增员工</a></div>--%>
