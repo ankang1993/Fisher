@@ -41,7 +41,7 @@ public interface AttendDao extends BaseDao<Attend> {
      * 查看员工前七天的非正常打卡
      *
      * @param emp 员工
-     * @return 该员工的前三天的非正常打卡
+     * @return 该员工的前七天的非正常打卡
      */
     List<Attend> findByEmpUnAttend(Employee emp
             , AttendType type);

@@ -41,7 +41,8 @@ public class CheckAppAction extends MgrBaseAction {
         // 拒绝申请
         else if (result.equals("deny")) {
             mgr.check(appid, mgrName, false);
-        } else {
+        }
+        else {
             throw new Exception("Miss parameter.");
         }
         return SUCCESS;

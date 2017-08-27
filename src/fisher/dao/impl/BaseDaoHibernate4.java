@@ -47,8 +47,8 @@ public class BaseDaoHibernate4<T> implements BaseDao<T> {
     public void delete(Class<T> entityClazz, Serializable id) {
         getSessionFactory().getCurrentSession()
                 .createQuery("delete " + entityClazz.getSimpleName()
-                        + " en where en.id = ?0")
-                .setParameter("0", id)
+                        + " en where en.id = ?1")
+                .setParameter("1", id)
                 .executeUpdate();
     }
 
@@ -57,8 +57,8 @@ public class BaseDaoHibernate4<T> implements BaseDao<T> {
         return find("select en from "
                 + entityClazz.getSimpleName() + " en");
     }
-    // 获取实体总数
 
+    // 获取实体总数
     public long findCount(Class<T> entityClazz) {
         List<?> l = find("select count(*) from "
                 + entityClazz.getSimpleName());

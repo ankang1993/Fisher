@@ -24,8 +24,7 @@ public class PunchAction extends EmpBaseAction {
         // 创建ActionContext实例
         ActionContext ctx = ActionContext.getContext();
         // 获取HttpSession中的user属性
-        String user = (String) ctx.getSession()
-                .get(WebConstant.USER);
+        String user = (String) ctx.getSession().get(WebConstant.USER);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         // 格式化当前时间
         String dutyDay = sdf.format(new Date());

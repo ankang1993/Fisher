@@ -22,7 +22,6 @@ public class CheckBack implements Serializable {
     // 批复理由
     @Column(name = "check_reason", length = 255)
     private String reason;
-
     // 该批复对应的申请
     @OneToOne(targetEntity = Application.class)
     @JoinColumn(name = "app_id", nullable = false, unique = true)

@@ -15,6 +15,7 @@ import java.util.List;
 
 public class EmpManagerImpl
         implements EmpManager {
+    // dao组件的成员变量
     private ApplicationDao appDao;
     private AttendDao attendDao;
     private AttendTypeDao typeDao;
@@ -23,6 +24,7 @@ public class EmpManagerImpl
     private ManagerDao mgrDao;
     private FileDao fileDao;
 
+    // dao组件的setter方法
     public void setAppDao(ApplicationDao appDao) {
         this.appDao = appDao;
     }
@@ -65,7 +67,8 @@ public class EmpManagerImpl
         // 如果找到普通员工，以普通员工登录
         else if (empDao.findByNameAndPass(mgr).size() >= 1) {
             return LOGIN_EMP;
-        } else {
+        }
+        else {
             return LOGIN_FAIL;
         }
     }
@@ -89,7 +92,8 @@ public class EmpManagerImpl
                     .get(Calendar.HOUR_OF_DAY) < AM_LIMIT) {
                 // 上班打卡
                 a.setIsCome(true);
-            } else {
+            }
+            else {
                 // 下班打卡
                 a.setIsCome(false);
             }
@@ -122,10 +126,14 @@ public class EmpManagerImpl
                 && attends.get(0).getIsCome()
                 && attends.get(0).getPunchTime() == null) {
             return COME_PUNCH;
-        } else if (attends.size() == 1
+        }
+        // 开始下班打卡
+        else if (attends.size() == 1
                 && attends.get(0).getPunchTime() == null) {
             return LEAVE_PUNCH;
-        } else if (attends.size() == 2) {
+        }
+        // 可以上班、下班打卡
+        else if (attends.size() == 2) {
             // 可以上班、下班打卡
             if (attends.get(0).getPunchTime() == null
                     && attends.get(1).getPunchTime() == null) {
@@ -134,7 +142,8 @@ public class EmpManagerImpl
             // 可以下班打卡
             else if (attends.get(1).getPunchTime() == null) {
                 return LEAVE_PUNCH;
-            } else {
+            }
+            else {
                 return NO_PUNCH;
             }
         }
@@ -250,33 +259,23 @@ public class EmpManagerImpl
     }
 
     /**
-     * 根据经理返回文件总数
+     * 返回文件总数
      *
-     * @param mgr 经理名
      * @return 文件总数
      */
-    public long getCount(String mgr) throws HrException {
-        Employee m = empDao.findByName(mgr);
-        if (m == null) {
-            throw new HrException("Do you have logged in?");
-        }
+    public long getCount() throws HrException {
         return fileDao.findCount(File.class);
     }
 
     /**
      * 返回全部文件
      *
-     * @param mgr 员工名
      * @param page 页码
      * @param pageSize 每页数量
      * @return 全部文件
      */
-    public List<FileBean> getFiles(String mgr, int page, int pageSize)
+    public List<FileBean> getFiles(int page, int pageSize)
             throws HrException {
-        Employee m = empDao.findByName(mgr);
-        if (m == null) {
-            throw new HrException("Do you have logged in?");
-        }
         List<File> files = fileDao.findByPage("select e from File e", page, pageSize);
         //封装VO集
         List<FileBean> result = new ArrayList<FileBean>();
@@ -287,17 +286,12 @@ public class EmpManagerImpl
     }
 
     /**
-     * 根据经理返回符合名字要求的文件
+     * 返回符合名字要求的文件
      *
-     * @param mgr 经理名
      * @param name 文件名
      * @return 符合名字要求的全部文件
      */
-    public List<FileBean> getFilesByName(String mgr, String name) throws HrException {
-        Employee m = empDao.findByName(mgr);
-        if (m == null) {
-            throw new HrException("Do you have logged in?");
-        }
+    public List<FileBean> getFilesByName(String name) throws HrException {
         List<File> files = fileDao.findAll(File.class);
         //封装VO集
         List<FileBean> result = new ArrayList<FileBean>();
@@ -330,6 +324,7 @@ public class EmpManagerImpl
      * @return
      */
     public void uploadFile(String fileName, String path, String type) throws HrException {
+        //新建File记录并保存
         File file = new File();
         file.setName(fileName);
         file.setAddress(path);
@@ -348,7 +343,9 @@ public class EmpManagerImpl
         File file = fileDao.get(File.class, fileId);
         // 返回指定文件对应的真实地址
         String realPath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/files") + "\\" + file.getAddress();
+        // 删除文件
         new java.io.File(realPath).delete();
+        // 删除数据库记录
         fileDao.delete(File.class, fileId);
     }
 
@@ -361,6 +358,7 @@ public class EmpManagerImpl
      */
     public String editPassword(String mgrName, String newPass, String originalPass) {
         Employee emp = empDao.findByName(mgrName);
+        // 如果原密码错误则返回
         if (!emp.getPass().equals(originalPass)) return "passwrong";
         emp.setPass(newPass);
         return "success";

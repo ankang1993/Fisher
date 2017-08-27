@@ -124,7 +124,7 @@ public class Employee implements Serializable {
         return this.attends;
     }
 
-    // 根据name、pass来重写hashCode()方法
+    // 根据name来重写hashCode()方法
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -133,7 +133,7 @@ public class Employee implements Serializable {
         return result;
     }
 
-    // 根据name、pass来重写equals()方法，只要name、pass相同的员工即认为相等。
+    // 根据name来重写equals()方法，只要name相同的员工即认为相等。
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

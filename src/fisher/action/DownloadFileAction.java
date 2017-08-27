@@ -42,10 +42,9 @@ public class DownloadFileAction extends EmpBaseAction {
         // ServletContext提供getResourceAsStream()方法
         // 返回指定文件对应的输入流
         String realPath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/files") + "\\" + file.getAddress();
-        java.io.File file = new java.io.File(realPath);
-        return new FileInputStream(file);
+        return new FileInputStream(new java.io.File(realPath));
     }
-
+    // 返回文件名字
     public String getFileName() throws Exception {
         String downFileName = file.getName();
         downFileName = new String(downFileName.getBytes(), "ISO8859-1");

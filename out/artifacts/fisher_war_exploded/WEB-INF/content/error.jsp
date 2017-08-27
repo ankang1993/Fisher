@@ -3,7 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>出错提示页</title>
+    <title>ERROR!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
@@ -18,14 +18,6 @@
     <tr>
         <td height="315">
             <s:property value="exception.message"/>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div align="center" style="font:large;color:#333333">
-                请您先核对输入，如果再次出现该错误，<a href="mailto:akyu@outlook.com">akyu@outlook.com</a>，谢谢。
-            </div>
-            <br>
         </td>
     </tr>
 </table>

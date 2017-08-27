@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,29 +9,26 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/jquery/jquery.uploadify.min.js"></script>
     <script type="text/javascript">
-        $(function(){
+        $(function () {
             $("#myFile").uploadify({
 //                'debug'     : true, //开启调试
-                'auto'           : false, //是否自动上传
-                'swf'            : '${pageContext.request.contextPath}/jquery/uploadify.swf',  //引入uploadify.swf
-                'uploader'       : 'uploadFile',//请求路径
-                'queueID'        : 'fileQueue',//队列id,用来展示上传进度的
-                'width'     : '75',  //按钮宽度
-                'height'    : '24',  //按钮高度
-                'queueSizeLimit' : 100,  //同时上传文件的个数
-                'multi'          : true,  //允许多文件上传
-                'buttonText'     : '浏览文件',//按钮上的文字
-                'fileSizeLimit' : '1000MB', //设置单个文件大小限制
-                'fileObjName' : 'myFile',  //<input type="file"/>的name
-                'method' : 'post',
-                'removeCompleted' : true,//上传完成后自动删除队列
-                'onFallback':function(){
+                'auto': false, //是否自动上传
+                'swf': '${pageContext.request.contextPath}/jquery/uploadify.swf',  //引入uploadify.swf
+                'uploader': 'uploadFile',//请求路径
+                'queueID': 'fileQueue',//队列id,用来展示上传进度的
+                'width': '75',  //按钮宽度
+                'height': '24',  //按钮高度
+                'queueSizeLimit': 100,  //同时上传文件的个数
+                'multi': true,  //允许多文件上传
+                'buttonText': '浏览文件',//按钮上的文字
+                'fileSizeLimit': '1000MB', //设置单个文件大小限制
+                'fileObjName': 'myFile',  //<input type="file"/>的name
+                'method': 'post',
+                'removeCompleted': true,//上传完成后自动删除队列
+                'onFallback': function () {
                     alert("您未安装FLASH控件，无法上传文件！请安装FLASH控件后再试。");
                 },
-//                'onUploadSuccess' : function(file, data, response){//单个文件上传成功触发
-//                    //data就是action中返回来的数据
-//                },
-                'onQueueComplete' : function(){//所有文件上传完成
+                'onQueueComplete': function () {//所有文件上传完成
                     alert("文件全部上传成功!");
                 }
             });
@@ -64,7 +61,7 @@
                         <input type="file" id="myFile" name="myFile">
                     </td>
                     <td>
-                        <a href="javascript:$('#myFile').uploadify('upload','*')">开始上传</a>
+                        <a href="javascript:$('#myFile').uploadify('upload','*')">开始所有上传</a>
                     </td>
                     <td>
                         <a href="javascript:$('#myFile').uploadify('cancel','*')">取消所有上传</a>

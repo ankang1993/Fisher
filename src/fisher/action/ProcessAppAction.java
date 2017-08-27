@@ -5,7 +5,7 @@ import fisher.action.base.EmpBaseAction;
 public class ProcessAppAction extends EmpBaseAction {
     // 申请异动的出勤ID
     private int attId;
-    // 希望改变到出勤类型
+    // 希望改变到的出勤类型
     private int typeId;
     // 申请理由
     private String reason;
@@ -46,7 +46,8 @@ public class ProcessAppAction extends EmpBaseAction {
         // 如果申请成功
         if (result) {
             addActionMessage(getText("app.success"));
-        } else {
+        }
+        else {
             addActionMessage(getText("app.before"));
         }
         return SUCCESS;

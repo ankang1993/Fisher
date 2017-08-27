@@ -7,6 +7,7 @@ import fisher.vo.AttendBean;
 import java.util.List;
 
 public class ViewUnAttendAction extends EmpBaseAction {
+    // 封装当前员工所有的非正常打卡记录
     private List<AttendBean> unAttend;
 
     // unAttend的setter和getter方法

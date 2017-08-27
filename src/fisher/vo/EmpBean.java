@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class EmpBean implements Serializable {
     private static final long serialVersionUID = 48L;
+
+    // 成员变量
     private int empId;
     private String empName;
     private String empRealName;

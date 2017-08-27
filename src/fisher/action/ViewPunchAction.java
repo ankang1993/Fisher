@@ -6,6 +6,7 @@ import fisher.action.base.MgrBaseAction;
 import java.util.List;
 
 public class ViewPunchAction extends MgrBaseAction {
+    // 封装当前经理所有员工的非正常打卡记录的List
     private List punchs;
 
     // punchs的setter和getter方法
@@ -24,7 +25,7 @@ public class ViewPunchAction extends MgrBaseAction {
         // 获取HttpSession中的user属性
         String mgrName = (String) ctx.getSession()
                 .get(WebConstant.USER);
-        // 获取需要被当前经理处理的全部申请
+        // 获取需要当前经理所有员工的非正常打卡记录
         setPunchs(mgr.getPunchsByMgr(mgrName));
         return SUCCESS;
     }

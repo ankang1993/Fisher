@@ -7,7 +7,7 @@ public class DeleteEmpAction extends MgrBaseAction {
     // 代表删除员工ID的成员变量
     private int empId;
 
-    // emp的setter和getter方法
+    // empId的setter和getter方法
     public void setEmpId(int empId) {
         this.empId = empId;
     }

@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>注册</title>
+    <title>注册新账户</title>
     <s:head/>
 </head>
 <body>

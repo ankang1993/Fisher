@@ -19,6 +19,7 @@ public class ViewEmpAction extends MgrBaseAction {
     public List getEmps() {
         return this.emps;
     }
+
     // name的setter和getter方法
     public String getName() {
         return name;
@@ -28,6 +29,7 @@ public class ViewEmpAction extends MgrBaseAction {
         this.name = name;
     }
 
+    // 查找员工
     public String search() {
         if (name == null) return SUCCESS;
         // 创建ActionContext实例

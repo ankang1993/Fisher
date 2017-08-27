@@ -5,13 +5,5 @@
   Time: 9:03
   To change this template use File | Settings | File Templates.
 --%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-  <%--<head>--%>
-    <%--<title>$Title$</title>--%>
-  <%--</head>--%>
-  <%--<body>--%>
-  <%--$END$--%>
-  <%--</body>--%>
-<%--</html>--%>
+<%-- 跳转到首页 --%>
 <jsp:forward page="/WEB-INF/content/main.jsp"/>

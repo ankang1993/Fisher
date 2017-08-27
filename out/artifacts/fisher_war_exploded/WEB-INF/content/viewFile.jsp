@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>查看文件</title>
-    <link href="images/css.css" rel="stylesheet" type="text/css">
+    <s:head/>
 </head>
 <body>
 <%@include file="header.jsp" %>
@@ -77,11 +77,12 @@
     </tr>
 </table>
 <script>
-    function downloadFile(id){
-        window.location.href="downloadFile.action?fileId=" + id;
+    function downloadFile(id) {
+        window.location.href = "downloadFile.action?fileId=" + id;
     }
-    function deleteFile(id){
-        window.location.href="deleteFile.action?fileId=" + id;
+
+    function deleteFile(id) {
+        window.location.href = "deleteFile.action?fileId=" + id;
     }
 </script>
 <%@include file="footer.jsp" %>

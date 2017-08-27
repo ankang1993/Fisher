@@ -33,7 +33,7 @@ public interface EmpManager {
     // 打卡成功
     public static final int PUNCH_SUCC = 2;
 
-    // 以上午11点为上午时间
+    // 以上午11点为上午时间的截止点
     public static final int AM_LIMIT = 11;
 
 
@@ -76,7 +76,7 @@ public interface EmpManager {
      * @param isCome  是否是上班打卡
      * @return 打卡结果
      */
-    public int punch(String user, String dutyDay, boolean isCome);
+    int punch(String user, String dutyDay, boolean isCome);
 
     /**
      * 员工查看自己的最近三天非正常打卡
@@ -104,31 +104,28 @@ public interface EmpManager {
     boolean addApplication(int attId, int typeId, String reason);
 
     /**
-     * 根据经理返回全部文件
+     * 返回全部文件
      *
-     * @param mgr 经理名
      * @param page 页码
      * @param pageSize 每页数量
      * @return 全部文件
      */
-    List<FileBean> getFiles(String mgr, int page, int pageSize);
+    List<FileBean> getFiles(int page, int pageSize);
 
     /**
-     * 根据经理返回文件总数
+     * 返回文件总数
      *
-     * @param mgr 经理名
      * @return 文件总数
      */
-    long getCount(String mgr);
+    long getCount();
 
     /**
-     * 根据经理返回符合名字要求的文件
+     * 返回符合名字要求的文件
      *
-     * @param mgr 经理名
      * @param name 文件名
      * @return 符合名字要求的全部文件
      */
-    List<FileBean> getFilesByName(String mgr, String name);
+    List<FileBean> getFilesByName(String name);
 
     /**
      * 下载指定文件

@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class AppBean implements Serializable {
     private static final long serialVersionUID = 48L;
 
+    // 成员变量
     private int id;
     private String empName;
     private String empRealName;

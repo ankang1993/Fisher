@@ -1,6 +1,3 @@
-<%
-    session.invalidate();
-%>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,7 +11,7 @@
        background="${pageContext.request.contextPath}/images/bodybg.jpg">
     <tr>
         <td height="264">
-            <div align="center"><font color="#336666" size="3"><b>您已经成功地登出系统，欢迎下次光临。</b></font></div>
+            <div align="center"><font color="#336666" size="3"><b>您已经成功地登出系统，欢迎下次使用。</b></font></div>
         </td>
     </tr>
 </table>

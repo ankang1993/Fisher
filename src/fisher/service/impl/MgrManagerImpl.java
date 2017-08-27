@@ -14,6 +14,7 @@ import java.util.Set;
 
 public class MgrManagerImpl
         implements MgrManager {
+    // dao组件的成员变量
     private ApplicationDao appDao;
     private AttendDao attendDao;
     private AttendTypeDao typeDao;
@@ -21,6 +22,7 @@ public class MgrManagerImpl
     private EmployeeDao empDao;
     private ManagerDao mgrDao;
 
+    // dao组件的setter方法
     public void setAppDao(ApplicationDao appDao) {
         this.appDao = appDao;
     }
@@ -53,10 +55,8 @@ public class MgrManagerImpl
      */
     public String addEmp(Employee emp, String mgr) throws HrException {
         Manager m = mgrDao.findByName(mgr);
-        if (m == null) {
-            throw new HrException("Are you Boss? Or do you have logged in?");
-        }
         List<Employee> emps = empDao.findAll(Employee.class);
+        // 如果用户名已存在则返回
         if (emps.contains(emp)) return "duplicate";
         emp.setManager(m);
         empDao.save(emp);
@@ -71,9 +71,6 @@ public class MgrManagerImpl
      */
     public void deleteEmp(int empId, String mgr) throws HrException {
         Manager m = mgrDao.findByName(mgr);
-        if (m == null) {
-            throw new HrException("Are you Boss? Or do you have logged in?");
-        }
         empDao.delete(Employee.class, empId);
     }
 
@@ -86,14 +83,11 @@ public class MgrManagerImpl
     public List<EmpBean> getEmpsByMgr(String mgr)
             throws HrException {
         Manager m = mgrDao.findByName(mgr);
-        if (m == null) {
-            throw new HrException("Are you Boss? Or do you have logged in?");
-        }
-        //查询该经理对应的全部员工
+        // 查询该经理对应的全部员工
         Set<Employee> emps = m.getEmployees();
-        //封装VO集
+        // 封装VO集
         List<EmpBean> result = new ArrayList<EmpBean>();
-        //部门依然没有员工
+        // 部门没有员工
         if (emps == null || emps.size() < 1) {
             return result;
         }
@@ -113,14 +107,11 @@ public class MgrManagerImpl
      */
     public List<EmpBean> getEmpsByName(String mgr,String name) throws HrException {
         Manager m = mgrDao.findByName(mgr);
-        if (m == null) {
-            throw new HrException("Are you Boss? Or do you have logged in?");
-        }
-        //查询该经理对应的全部员工
+        // 查询该经理对应的全部员工
         Set<Employee> emps = m.getEmployees();
-        //封装VO集
+        // 封装VO集
         List<EmpBean> result = new ArrayList<EmpBean>();
-        //部门依然没有员工
+        // 部门没有员工
         if (emps == null || emps.size() < 1) {
             return result;
         }
@@ -141,23 +132,20 @@ public class MgrManagerImpl
      */
     public List<AppBean> getAppsByMgr(String mgr) throws HrException {
         Manager m = mgrDao.findByName(mgr);
-        if (m == null) {
-            throw new HrException("Are you Boss? Or do you have logged in?");
-        }
-        //查询该经理对应的全部员工
+        // 查询该经理对应的全部员工
         Set<Employee> emps = m.getEmployees();
-        //封装VO集
+        // 封装VO集
         List<AppBean> result = new ArrayList<AppBean>();
-        //部门依然没有员工
+        // 部门没有员工
         if (emps == null || emps.size() < 1) {
             return result;
         }
         for (Employee e : emps) {
-            //查看该员工的全部申请
+            // 查看该员工的全部申请
             List<Application> apps = appDao.findByEmp(e);
             if (apps != null && apps.size() > 0) {
                 for (Application app : apps) {
-                    //只选择还未处理的申请
+                    // 只选择还未处理的申请
                     if (app.getResult() == false) {
                         Attend attend = app.getAttend();
                         result.add(new AppBean(app.getId(),
@@ -182,29 +170,25 @@ public class MgrManagerImpl
         CheckBack check = new CheckBack();
         check.setApp(app);
         Manager manager = mgrDao.findByName(mgrName);
-        if (manager == null) {
-            throw new HrException("Are you Boss? Or do you have logged in?");
-        }
         check.setManager(manager);
-        //同意通过申请
+        // 同意通过申请
         if (result) {
-            //设置通过申请
+            // 设置通过申请
             check.setResult(true);
-
-            //修改申请为已经批复
+            // 修改申请为已经批复
             app.setResult(true);
             appDao.update(app);
-            //为真时，还需要修改出勤的类型
+            // 为真时，还需要修改出勤的类型
             Attend attend = app.getAttend();
             attend.setType(app.getType());
             attendDao.update(attend);
         } else {
-            //没有通过申请
+            // 没有通过申请
             check.setResult(false);
             app.setResult(true);
             appDao.update(app);
         }
-        //保存申请批复
+        // 保存申请批复
         checkDao.save(check);
     }
 
@@ -216,14 +200,11 @@ public class MgrManagerImpl
      */
     public List<AttendBean> getPunchsByMgr(String mgr) {
         Manager m = mgrDao.findByName(mgr);
-        if (m == null) {
-            throw new HrException("Are you Boss? Or do you have logged in?");
-        }
-        //查询该经理对应的全部员工
+        // 查询该经理对应的全部员工
         Set<Employee> emps = m.getEmployees();
-        //封装VO集
+        // 封装VO集
         List<AttendBean> result = new ArrayList<AttendBean>();
-        //部门依然没有员工
+        // 部门没有员工
         if (emps == null || emps.size() < 1) {
             return result;
         }

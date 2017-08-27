@@ -11,6 +11,7 @@ public class PunchJob extends QuartzJobBean {
     // 该作业类所依赖的业务逻辑组件
     private EmpManager empMgr;
 
+    // empMgr的setter方法
     public void setEmpMgr(EmpManager empMgr) {
         this.empMgr = empMgr;
     }
@@ -19,7 +20,6 @@ public class PunchJob extends QuartzJobBean {
     public void executeInternal(JobExecutionContext ctx)
             throws JobExecutionException {
         if (!isRunning) {
-            System.out.println("开始调度自动打卡");
             isRunning = true;
             // 调用业务逻辑方法
             empMgr.autoPunch();

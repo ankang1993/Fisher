@@ -6,6 +6,7 @@ import fisher.action.base.MgrBaseAction;
 import java.util.List;
 
 public class ViewAppAction extends MgrBaseAction {
+    // 封装所有申请的List
     private List apps;
 
     // apps的setter和getter方法

@@ -3,11 +3,6 @@
 	"-//Apache Struts//XWork Validator 1.0.3//EN"
 	"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
 <validators>
-	<field name="attId">
-		<field-validator type="required">
-			<message>出勤ID必填！</message>
-		</field-validator>
-	</field>
 	<field name="typeId">
 		<field-validator type="required">
 			<message>希望申请的出勤类型必填！</message>

@@ -6,7 +6,7 @@ public class DeleteFileAction extends EmpBaseAction {
     // 代表删除文件ID的成员变量
     private int fileId;
 
-    // file的setter和getter方法
+    // fileId的setter和getter方法
     public void setFileId(int fileId) {
         this.fileId = fileId;
     }

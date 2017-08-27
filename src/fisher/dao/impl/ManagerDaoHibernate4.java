@@ -10,7 +10,7 @@ public class ManagerDaoHibernate4 extends BaseDaoHibernate4<Manager>
     /**
      * 根据用户名和密码查询经理
      *
-     * @param emp 包含指定用户名、密码的经理
+     * @param mgr 包含指定用户名、密码的经理
      * @return 符合指定用户名和密码的经理
      */
     public List<Manager> findByNameAndPass(Manager mgr) {
