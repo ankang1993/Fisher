@@ -58,6 +58,7 @@
             </table>
             <div>
                 <s:if test="flag==0">
+                    <br>
                     总共${count}条记录，共${pageCount}页，当前是第${page}页。
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="viewFile.action?page=1">首页</a>

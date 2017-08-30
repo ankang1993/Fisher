@@ -18,4 +18,4 @@ v3.1.0
 - Fixed onInit event
 - Added onDisable and onEnable events
 - Added SWFObject for flash detection
-- Added indication of cancelled files
+- Added indication of cancelled myFiles

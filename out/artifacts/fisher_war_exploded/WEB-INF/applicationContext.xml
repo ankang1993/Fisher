@@ -37,7 +37,7 @@
                 <value>fisher.domain.CheckBack</value>
                 <value>fisher.domain.Employee</value>
                 <value>fisher.domain.Manager</value>
-                <value>fisher.domain.File</value>
+                <value>fisher.domain.MyFile</value>
             </list>
         </property>
         <!-- 定义Hibernate的SessionFactory的属性 -->

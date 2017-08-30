@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "file_inf")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class File implements Serializable {
+public class MyFile implements Serializable {
     private static final long serialVersionUID = 48L;
     @Id
     @Column(name = "file_id")
@@ -27,11 +27,11 @@ public class File implements Serializable {
     private String type;
 
     // 无参数的构造器
-    public File() {
+    public MyFile() {
     }
 
     // 初始化全部成员变量的构造器
-    public File(Integer id, String name, String address, String type) {
+    public MyFile(Integer id, String name, String address, String type) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -90,7 +90,7 @@ public class File implements Serializable {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
-        File other = (File) obj;
+        MyFile other = (MyFile) obj;
         if (name == null) {
             if (other.getName() != null) return false;
         } else if (!name.equals(other.getName())) return false;

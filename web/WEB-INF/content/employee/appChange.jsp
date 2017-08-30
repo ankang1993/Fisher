@@ -8,8 +8,7 @@
     <title>提出异动申请</title>
     <s:head/>
 </head>
-<body
-">
+<body>
 <%@include file="../header.jsp" %>
 <%@include file="empheader.jsp" %>
 <table width="960" align="center"

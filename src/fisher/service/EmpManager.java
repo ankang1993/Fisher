@@ -1,7 +1,7 @@
 package fisher.service;
 
 import fisher.domain.AttendType;
-import fisher.domain.File;
+import fisher.domain.MyFile;
 import fisher.domain.Manager;
 import fisher.exception.HrException;
 import fisher.vo.AttendBean;
@@ -133,7 +133,7 @@ public interface EmpManager {
      * @param fileId 文件ID
      * @return File文件
      */
-    File downloadFile(int fileId) throws HrException;
+    MyFile downloadFile(int fileId) throws HrException;
 
     /**
      * 上传新文件

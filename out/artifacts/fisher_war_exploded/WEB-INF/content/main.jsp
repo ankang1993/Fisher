@@ -26,7 +26,7 @@
                 </span>
             </p>
             <p align="center" class="pt11">本程序版权属于AK<br>
-                参考自李刚轻量级Java EE企业应用实战（第四版）<a href="http://www.crazyit.org">http://www.crazyit.org</a><br>
+                参考自李刚轻量级Java EE企业应用实战（第四版）
             </p>
         </td>
     </tr>

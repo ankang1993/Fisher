@@ -17,7 +17,7 @@ body {
 	<h1>Uploadify Demo</h1>
 	<form>
 		<div id="queue"></div>
-		<input id="file_upload" name="file_upload" type="file" multiple="true">
+		<input id="file_upload" name="file_upload" type="myFile" multiple="true">
 	</form>
 
 	<script type="text/javascript">

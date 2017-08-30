@@ -1,13 +1,13 @@
 package fisher.dao.impl;
 
 import fisher.dao.FileDao;
-import fisher.domain.File;
+import fisher.domain.MyFile;
 import org.hibernate.Query;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class FileDaoHibernate4 extends BaseDaoHibernate4<File>
+public class FileDaoHibernate4 extends BaseDaoHibernate4<MyFile>
         implements FileDao {
     /**
      * 根据名字查询文件
@@ -15,11 +15,11 @@ public class FileDaoHibernate4 extends BaseDaoHibernate4<File>
      * @param id 文件的名字
      * @return 符合名字的文件
      */
-    public File findByName(Serializable id) {
-        List<File> files = find("select e from File e where e.id = ?0"
+    public MyFile findByName(Serializable id) {
+        List<MyFile> myFiles = find("select e from MyFile e where e.id = ?0"
                 , id);
-        if (files != null && files.size() >= 1) {
-            return files.get(0);
+        if (myFiles != null && myFiles.size() >= 1) {
+            return myFiles.get(0);
         }
         return null;
     }
@@ -33,7 +33,7 @@ public class FileDaoHibernate4 extends BaseDaoHibernate4<File>
      * @return 当前页的所有记录
      */
     @SuppressWarnings("unchecked")
-    public List<File> findByPage(String hql, int pageNo, int pageSize
+    public List<MyFile> findByPage(String hql, int pageNo, int pageSize
             , Object... params) {
         // 创建查询
         Query query = getSessionFactory().getCurrentSession()

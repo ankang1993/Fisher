@@ -95,10 +95,8 @@ public class ViewFileAction extends EmpBaseAction {
         // 设置pageCount
         if (pageCount == 0) {
             count = mgr.getCount();
-            long tmp = 0;
-            if (count % pageSize == 0) tmp /= pageSize;
-            else tmp = tmp / pageSize + 1;
-            setPageCount(tmp);
+            pageCount = count / pageSize;
+            if (count % pageSize != 0) pageCount++;
         }
         // 如果不存在记录，则置pageCount为1
         if (pageCount == 0) pageCount = 1;

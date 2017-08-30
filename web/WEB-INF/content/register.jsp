@@ -25,7 +25,7 @@
                     <s:textfield name="emp.name" label="用户名"/>
                     <s:textfield name="emp.realname" label="真实姓名"/>
                     <s:password name="emp.pass" label="密码"/>
-                    <s:password name="confirmpass" label="确认密码"/>
+                    <s:password name="confirmPass" label="确认密码"/>
                     <s:textfield name="emp.phone" label="手机号"/>
                     <tr>
                         <td colspan="2">
@@ -34,6 +34,8 @@
                     </tr>
                 </s:form>
             </div>
+            <br>
+            已有账户？<INPUT type="button" value="登陆" onClick="location.href='login'">
         </td>
     </tr>
 </table>

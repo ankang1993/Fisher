@@ -1,9 +1,10 @@
 package fisher.action;
 
 import fisher.action.base.EmpBaseAction;
-import fisher.domain.File;
+import fisher.domain.MyFile;
 import org.apache.struts2.ServletActionContext;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
@@ -11,7 +12,7 @@ public class DownloadFileAction extends EmpBaseAction {
     // 代表下载文件ID的成员变量
     private int fileId;
     // 代表下载文件的成员变量
-    private File file;
+    private MyFile myFile;
 
     // fileId的setter和getter方法
     public void setFileId(int fileId) {
@@ -22,13 +23,13 @@ public class DownloadFileAction extends EmpBaseAction {
         return this.fileId;
     }
 
-    // file的setter和getter方法
-    public void setFile(File file) {
-        this.file = file;
+    // MyFile的setter和getter方法
+    public void setMyFile(MyFile myFile) {
+        this.myFile = myFile;
     }
 
-    public File getFile() {
-        return file;
+    public MyFile getMyFile() {
+        return myFile;
     }
 
     /*
@@ -38,15 +39,15 @@ public class DownloadFileAction extends EmpBaseAction {
     inputName参数的值就是方法去掉get前缀、首字母小写的字符串
     */
     public InputStream getTargetFile() throws Exception {
-        this.file = mgr.downloadFile(getFileId());
+        this.myFile = mgr.downloadFile(getFileId());
         // ServletContext提供getResourceAsStream()方法
         // 返回指定文件对应的输入流
-        String realPath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/files") + "\\" + file.getAddress();
-        return new FileInputStream(new java.io.File(realPath));
+        String realPath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/files") + "\\" + myFile.getAddress();
+        return new FileInputStream(new File(realPath));
     }
     // 返回文件名字
     public String getFileName() throws Exception {
-        String downFileName = file.getName();
+        String downFileName = myFile.getName();
         downFileName = new String(downFileName.getBytes(), "ISO8859-1");
         return downFileName;
     }

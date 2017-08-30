@@ -264,7 +264,7 @@ public class EmpManagerImpl
      * @return 文件总数
      */
     public long getCount() throws HrException {
-        return fileDao.findCount(File.class);
+        return fileDao.findCount(MyFile.class);
     }
 
     /**
@@ -276,10 +276,10 @@ public class EmpManagerImpl
      */
     public List<FileBean> getFiles(int page, int pageSize)
             throws HrException {
-        List<File> files = fileDao.findByPage("select e from File e", page, pageSize);
+        List<MyFile> myFiles = fileDao.findByPage("select e from MyFile e", page, pageSize);
         //封装VO集
         List<FileBean> result = new ArrayList<FileBean>();
-        for (File f : files) {
+        for (MyFile f : myFiles) {
             result.add(new FileBean(f.getName(), f.getId()));
         }
         return result;
@@ -292,10 +292,10 @@ public class EmpManagerImpl
      * @return 符合名字要求的全部文件
      */
     public List<FileBean> getFilesByName(String name) throws HrException {
-        List<File> files = fileDao.findAll(File.class);
+        List<MyFile> myFiles = fileDao.findAll(MyFile.class);
         //封装VO集
         List<FileBean> result = new ArrayList<FileBean>();
-        for (File f : files) {
+        for (MyFile f : myFiles) {
             if (f.getName().contains(name)) {
                 result.add(new FileBean(f.getName(), f.getId()));
             }
@@ -309,10 +309,10 @@ public class EmpManagerImpl
      * @param fileId 文件名
      * @return File文件
      */
-    public File downloadFile(int fileId)
+    public MyFile downloadFile(int fileId)
             throws HrException {
-        File file = fileDao.get(File.class, fileId);
-        return file;
+        MyFile myFile = fileDao.get(MyFile.class, fileId);
+        return myFile;
     }
 
     /**
@@ -325,11 +325,11 @@ public class EmpManagerImpl
      */
     public void uploadFile(String fileName, String path, String type) throws HrException {
         //新建File记录并保存
-        File file = new File();
-        file.setName(fileName);
-        file.setAddress(path);
-        file.setType(type);
-        fileDao.save(file);
+        MyFile myFile = new MyFile();
+        myFile.setName(fileName);
+        myFile.setAddress(path);
+        myFile.setType(type);
+        fileDao.save(myFile);
     }
 
     /**
@@ -340,13 +340,13 @@ public class EmpManagerImpl
      */
     public void deleteFile(int fileId)
             throws HrException {
-        File file = fileDao.get(File.class, fileId);
+        MyFile myFile = fileDao.get(MyFile.class, fileId);
         // 返回指定文件对应的真实地址
-        String realPath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/files") + "\\" + file.getAddress();
+        String realPath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/files") + "\\" + myFile.getAddress();
         // 删除文件
         new java.io.File(realPath).delete();
         // 删除数据库记录
-        fileDao.delete(File.class, fileId);
+        fileDao.delete(MyFile.class, fileId);
     }
 
     /**

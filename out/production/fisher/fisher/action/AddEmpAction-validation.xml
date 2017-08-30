@@ -13,6 +13,11 @@
 			<message>您输入的用户名只能是字母和数字，且长度必须在4到25之间</message>
 		</field-validator>
 	</field>
+	<field name="emp.realname">
+		<field-validator type="requiredstring">
+			<message>真实姓名必填！</message>
+		</field-validator>
+	</field>
 	<field name="emp.pass">
 		<field-validator type="requiredstring">
 			<message>密码必填！</message>
@@ -22,7 +27,7 @@
 			<message>您输入的密码只能是字母和数字，且长度必须在6到25之间</message>
 		</field-validator>
 	</field>
-	<field name="confirmpass">
+	<field name="confirmPass">
 		<field-validator type="fieldexpression">
 			<param name="expression"><![CDATA[(confirmpass == emp.pass)]]></param>
 			<message>您输入的密码必须和确认密码一致</message>

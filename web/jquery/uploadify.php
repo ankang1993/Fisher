@@ -15,7 +15,7 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	$targetPath = $_SERVER['DOCUMENT_ROOT'] . $targetFolder;
 	$targetFile = rtrim($targetPath,'/') . '/' . $_FILES['Filedata']['name'];
 	
-	// Validate the file type
+	// Validate the myFile type
 	$fileTypes = array('jpg','jpeg','gif','png'); // File extensions
 	$fileParts = pathinfo($_FILES['Filedata']['name']);
 	
@@ -23,7 +23,7 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 		move_uploaded_file($tempFile,$targetFile);
 		echo '1';
 	} else {
-		echo 'Invalid file type.';
+		echo 'Invalid myFile type.';
 	}
 }
 ?>

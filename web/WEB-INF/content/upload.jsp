@@ -22,7 +22,7 @@
                 'multi': true,  //允许多文件上传
                 'buttonText': '浏览文件',//按钮上的文字
                 'fileSizeLimit': '1000MB', //设置单个文件大小限制
-                'fileObjName': 'myFile',  //<input type="file"/>的name
+                'fileObjName': 'myFile',  //<input type="myFile"/>的name
                 'method': 'post',
                 'removeCompleted': true,//上传完成后自动删除队列
                 'onFallback': function () {
@@ -58,7 +58,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="file" id="myFile" name="myFile">
+                        <input type="myFile" id="myFile" name="myFile">
                     </td>
                     <td>
                         <a href="javascript:$('#myFile').uploadify('upload','*')">开始所有上传</a>
