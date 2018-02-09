@@ -24,14 +24,14 @@
                 <s:form action="processLogin" validate="true" method="POST">
                     <s:textfield name="manager.name" label="用户名"/>
                     <s:password name="manager.pass" label="密码"/>
-                    <s:textfield name="vercode" label="验证码"/>
+                    <%--<s:textfield name="vercode" label="验证码"/>--%>
                     <tr>
                         <td colspan="2">
                             <s:submit value="登录" theme="simple"/>&nbsp;&nbsp;&nbsp;&nbsp;<s:reset theme="simple" value="重填"/>
                         </td>
                     </tr>
                 </s:form>
-                验证码：<img name="d" src="authImg">
+                <%--验证码：<img name="d" src="authImg">--%>
             </div>
             没有账户？<INPUT type="button" value="注册" onClick="location.href='register'"><br>
             忘记密码？请联系BOSS。

@@ -37,37 +37,35 @@ public class LoginAction extends EmpBaseAction {
             throws Exception {
         // 创建ActionContext实例
         ActionContext ctx = ActionContext.getContext();
-        // 获取HttpSession中的rand属性
-        String ver2 = (String) ctx.getSession().get("rand");
-        if (vercode.equalsIgnoreCase(ver2)) {
-            // 调用业务逻辑方法来处理登录请求
-            int result = mgr.validLogin(getManager());
-            // 登录结果为普通员工
-            if (result == 1) {
-                ctx.getSession().put(WebConstant.USER
-                        , manager.getName());
-                ctx.getSession().put(WebConstant.LEVEL
-                        , WebConstant.EMP_LEVEL);
-                addActionMessage(getText("login.success"));
-                return EMP_RESULT;
-            }
-            // 登录结果为经理
-            else if (result == 2) {
-                ctx.getSession().put(WebConstant.USER
-                        , manager.getName());
-                ctx.getSession().put(WebConstant.LEVEL
-                        , WebConstant.MGR_LEVEL);
-                addActionMessage(getText("login.success"));
-                return MGR_RESULT;
-            }
-            // 用户名和密码不匹配
-            else {
-                addActionMessage(getText("userPass.wrong"));
-                return ERROR;
-            }
+//        // 获取HttpSession中的rand属性
+//        String ver2 = (String) ctx.getSession().get("rand");
+        // 调用业务逻辑方法来处理登录请求
+        int result = mgr.validLogin(getManager());
+        // 登录结果为普通员工
+        if (result == 1) {
+            ctx.getSession().put(WebConstant.USER
+                    , manager.getName());
+            ctx.getSession().put(WebConstant.LEVEL
+                    , WebConstant.EMP_LEVEL);
+            addActionMessage(getText("login.success"));
+            return EMP_RESULT;
         }
-        // 验证码不匹配
-        addActionMessage(getText("code.wrong"));
-        return ERROR;
+        // 登录结果为经理
+        else if (result == 2) {
+            ctx.getSession().put(WebConstant.USER
+                    , manager.getName());
+            ctx.getSession().put(WebConstant.LEVEL
+                    , WebConstant.MGR_LEVEL);
+            addActionMessage(getText("login.success"));
+            return MGR_RESULT;
+        }
+        // 用户名和密码不匹配
+        else {
+            addActionMessage(getText("userPass.wrong"));
+            return ERROR;
+        }
+//        // 验证码不匹配
+//        addActionMessage(getText("code.wrong"));
+//        return ERROR;
     }
 }

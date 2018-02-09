@@ -9,6 +9,9 @@ import fisher.vo.EmpBean;
 import java.util.List;
 
 public interface MgrManager {
+    // 以上午11点为上午时间的截止点
+    public static final int AM_LIMIT = 11;
+
     /**
      * 新增员工
      *
@@ -16,6 +19,11 @@ public interface MgrManager {
      * @param mgr 员工所属的经理
      */
     String addEmp(Employee emp, String mgr) throws HrException;
+
+    /**
+     * 打卡，为新注册员工插入旷工记录
+     */
+    void punch(String user);
 
     /**
      * 删除员工

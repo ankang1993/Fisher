@@ -9,6 +9,7 @@ import fisher.vo.AttendBean;
 import fisher.vo.EmpBean;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 
@@ -62,6 +63,34 @@ public class MgrManagerImpl
         empDao.save(emp);
         return "success";
     }
+
+    /**
+     * 打卡，为新注册员工插入旷工记录
+     */
+    public void punch(String user) {
+        // 不能查找到对应用户，返回无法打卡
+        Employee emp = empDao.findByName(user);
+        // 获取当前时间
+        String dutyDay = new java.sql.Date(System.currentTimeMillis()).toString();
+        // 获取正常对应的出勤类型
+        AttendType atype = typeDao.get(AttendType.class, 1);
+        Attend a = new Attend();
+        a.setDutyDay(dutyDay);
+        a.setType(atype);
+        // 如果当前时间是是早上，对应于上班打卡
+        if (Calendar.getInstance()
+                .get(Calendar.HOUR_OF_DAY) < AM_LIMIT) {
+            // 上班打卡
+            a.setIsCome(true);
+        }
+        else {
+            // 下班打卡
+            a.setIsCome(false);
+        }
+        a.setEmployee(emp);
+        attendDao.save(a);
+    }
+
 
     /**
      * 删除员工
