@@ -43,7 +43,6 @@ public class AddEmpAction extends MgrBaseAction {
         }
         // 注册成功
         addActionMessage(getText("register.success"));
-        mgr.punch(emp.getName());
         return SUCCESS;
     }
 }

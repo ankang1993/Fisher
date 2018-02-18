@@ -18,7 +18,7 @@
             <table width="80%" border="0" align="center" cellspacing="1" bgcolor="#cccccc">
                 <tr bgcolor="#e1e1e1">
                     <td colspan="3">
-                        <div class="mytitle">查询成员（姓名）</div>
+                        <div class="mytitle">查询成员</div>
                     </td>
                     <td colspan="2">
                         <s:form action="searchEmp" theme="simple">

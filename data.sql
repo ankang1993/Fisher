@@ -90,8 +90,8 @@ insert into attend_type_inf ( type_name , amerce_amount)
 
 # 插入经理
 insert into employee_inf (emp_type , emp_name , emp_realname , emp_pass , emp_phone , mgr_id , dept_name)
-	values (2, 'admin', 'BOSS', 'admin' , '010-1234567' , null , 'AK');
+	values (2, 'admin', 'BOSS', '123456' , '010-1234567' , null , 'AK');
 # 员工
 insert into employee_inf (emp_type , emp_name , emp_realname , emp_pass , emp_phone , mgr_id)
-	values (1 , 'test', '测试', 'test' , '155555555555' , 1);
+	values (1 , 'test', '测试', 'test123456' , '155555555555' , 1);
 
