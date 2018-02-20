@@ -27,8 +27,8 @@
                 <tr class="pt11" height="45">
                     <td><b>用户名</b></td>
                     <td><b>姓名</b></td>
+                    <td><b>异动类型</b></td>
                     <td><b>打卡日期</b></td>
-                    <td><b>异动名称</b></td>
                     <td><b>打卡时间</b></td>
                 </tr>
                 <s:iterator value="punchs" status="index">
@@ -40,8 +40,8 @@
                     </s:else>
                     <td><s:property value="empName"/></td>
                     <td><s:property value="empRealName"/></td>
-                    <td><s:property value="dutyDay"/></td>
                     <td><s:property value="unType"/></td>
+                    <td><s:property value="dutyDay"/></td>
                     <td><s:property value="time"/></td>
                     </tr>
                 </s:iterator>

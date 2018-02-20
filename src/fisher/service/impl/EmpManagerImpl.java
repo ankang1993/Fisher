@@ -8,6 +8,7 @@ import fisher.vo.AttendBean;
 import fisher.vo.FileBean;
 import org.apache.struts2.ServletActionContext;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -78,9 +79,10 @@ public class EmpManagerImpl
      */
     public void autoPunch() {
         List<Employee> emps = empDao.findAll(Employee.class);
-        // 获取当前时间
-        String dutyDay = new java.sql.Date(
-                System.currentTimeMillis()).toString();
+        // 获取当前日期
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        String dutyDay = sdf.format(c.getTime());
         for (Employee e : emps) {
             // 获取旷工对应的出勤类型
             AttendType atype = typeDao.get(AttendType.class, 6);
@@ -88,8 +90,7 @@ public class EmpManagerImpl
             a.setDutyDay(dutyDay);
             a.setType(atype);
             // 如果当前时间是是早上，对应于上班打卡
-            if (Calendar.getInstance()
-                    .get(Calendar.HOUR_OF_DAY) < AM_LIMIT) {
+            if (c.get(Calendar.HOUR_OF_DAY) < AM_LIMIT) {
                 // 上班打卡
                 a.setIsCome(true);
             }
@@ -242,8 +243,7 @@ public class EmpManagerImpl
      * @param reason 申请的理由
      * @return 添加的结果
      */
-    public boolean addApplication(int attId, int typeId
-            , String reason) {
+    public boolean addApplication(int attId, int typeId, String reason) {
         // 创建一个申请
         Application app = new Application();
         // 获取申请需要改变的出勤记录

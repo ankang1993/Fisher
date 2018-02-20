@@ -28,7 +28,7 @@
                 <tr class="pt11" height="45">
                     <td><b>用户名</b></td>
                     <td><b>姓名</b></td>
-                    <td><b>缺勤类型</b></td>
+                    <td><b>异动类型</b></td>
                     <td><b>申请类型</b></td>
                     <td><b>理由</b></td>
                     <td><b>操作</b></td>

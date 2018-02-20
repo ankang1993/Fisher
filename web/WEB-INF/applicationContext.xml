@@ -147,10 +147,10 @@
     </tx:advice>
     <aop:config>
         <!-- 配置一个切入点，匹配empManager和mgrManager两个Bean的所有方法的执行 -->
-        <aop:pointcut id="leePointcut"
+        <aop:pointcut id="myPointcut"
                       expression="bean(empManager) or bean(mgrManager)"/>
         <!-- 指定在leePointcut切入点应用txAdvice事务增强处理 -->
         <aop:advisor advice-ref="txAdvice"
-                     pointcut-ref="leePointcut"/>
+                     pointcut-ref="myPointcut"/>
     </aop:config>
 </beans>

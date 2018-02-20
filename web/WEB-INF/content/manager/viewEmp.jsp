@@ -30,7 +30,7 @@
                 </tr>
                 <tr bgcolor="#e1e1e1">
                     <td colspan="5">
-                        <div class="mytitle">您正在查看全部成员</div>
+                        <div class="mytitle">成员列表</div>
                     </td>
                 </tr>
                 <tr class="pt11" height="45">

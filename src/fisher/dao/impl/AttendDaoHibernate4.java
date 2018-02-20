@@ -47,7 +47,7 @@ public class AttendDaoHibernate4 extends BaseDaoHibernate4<Attend>
     public Attend findByEmpAndDutyDayAndCome(Employee emp,
                                              String dutyDay, boolean isCome) {
         List<Attend> al = findByEmpAndDutyDay(emp, dutyDay);
-        if (al != null || al.size() > 1) {
+        if (al != null && al.size() > 1) {
             for (Attend attend : al) {
                 if (attend.getIsCome() == isCome) {
                     return attend;
@@ -61,7 +61,7 @@ public class AttendDaoHibernate4 extends BaseDaoHibernate4<Attend>
      * 查看员工前七天的非正常打卡
      *
      * @param emp 员工
-     * @return 该员工的前三天的非正常打卡
+     * @return 该员工的前七天的非正常打卡
      */
     public List<Attend> findByEmpUnAttend(Employee emp
             , AttendType type) {

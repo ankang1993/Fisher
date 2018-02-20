@@ -24,5 +24,8 @@ public interface BaseDao<T> {
 
     // 获取实体总数
     long findCount(Class<T> entityClazz);
+
+    //使用hql语句进行分页查询操作
+    List<T> findByPage(String hql, int ageNo, int pageSize);
 }
 

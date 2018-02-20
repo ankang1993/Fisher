@@ -35,7 +35,7 @@
                 </tr>
                 <tr bgcolor="#e1e1e1">
                     <td colspan="3">
-                        <div class="mytitle">查看全部文件</div>
+                        <div class="mytitle">文件列表</div>
                     </td>
                 </tr>
                 <tr class="pt11" height="45">

@@ -11,8 +11,8 @@ public class LoginAction extends EmpBaseAction {
     private final String MGR_RESULT = "mgr";
     // 封装请求参数
     private Manager manager;
-    // 登录的验证码
-    private String vercode;
+//    // 登录的验证码
+//    private String vercode;
 
     // manager的setter和getter方法
     public void setManager(Manager manager) {
@@ -23,14 +23,14 @@ public class LoginAction extends EmpBaseAction {
         return this.manager;
     }
 
-    // vercode的setter和getter方法
-    public void setVercode(String vercode) {
-        this.vercode = vercode;
-    }
-
-    public String getVercode() {
-        return this.vercode;
-    }
+//    // vercode的setter和getter方法
+//    public void setVercode(String vercode) {
+//        this.vercode = vercode;
+//    }
+//
+//    public String getVercode() {
+//        return this.vercode;
+//    }
 
     // 处理用户请求
     public String execute()

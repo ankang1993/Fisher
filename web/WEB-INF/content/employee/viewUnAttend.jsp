@@ -24,8 +24,8 @@
                     <td colspan="4">您只能查看最近七天的非正常打卡，如有异议，请立即向BOSS申请。</td>
                 </tr>
                 <tr class="pt11" height="45">
+                    <td width="20%"><b>异动类型</b></td>
                     <td width="29%"><b>打卡日期</b></td>
-                    <td width="20%"><b>异动名称</b></td>
                     <td width="26%"><b>打卡时间</b></td>
                     <td width="25%"><b>选择</b></td>
                 </tr>
@@ -36,8 +36,8 @@
                     <s:else>
                         <tr class="pt11" height="32">
                     </s:else>
-                    <td><s:property value="dutyDay"/></td>
                     <td><s:property value="unType"/></td>
+                    <td><s:property value="dutyDay"/></td>
                     <td><s:property value="time"/></td>
                     <td><a href='appChange.action?attid=<s:property value="id"/>'>申请改变</a></td>
                     </tr>

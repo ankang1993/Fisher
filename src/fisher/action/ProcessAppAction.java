@@ -40,7 +40,6 @@ public class ProcessAppAction extends EmpBaseAction {
     // 处理用户请求
     public String execute()
             throws Exception {
-        System.out.println(attId);
         // 处理异动申请
         boolean result = mgr.addApplication(attId, typeId, reason);
         // 如果申请成功

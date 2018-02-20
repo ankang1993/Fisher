@@ -4,7 +4,7 @@ import com.opensymphony.xwork2.ActionContext;
 import fisher.action.base.EmpBaseAction;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 
 public class PunchAction extends EmpBaseAction {
     // 封装处理结果的punchIsValid成员变量
@@ -25,9 +25,11 @@ public class PunchAction extends EmpBaseAction {
         ActionContext ctx = ActionContext.getContext();
         // 获取HttpSession中的user属性
         String user = (String) ctx.getSession().get(WebConstant.USER);
+        // 获取当前日期
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
         // 格式化当前时间
-        String dutyDay = sdf.format(new Date());
+        String dutyDay = sdf.format(c.getTime());
         // 调用业务逻辑方法处理用户请求
         int result = mgr.validPunch(user, dutyDay);
         setPunchIsValid(result);

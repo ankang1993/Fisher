@@ -8,7 +8,7 @@
     <!-- 配置了系列常量 -->
     <constant name="struts.custom.i18n.resources" value="resource"/>
     <constant name="struts.i18n.encoding" value="UTF-8" />
-    <constant name="struts.devMode" value="true"/>
+    <!--<constant name="struts.devMode" value="true"/>-->
     <constant name="struts.multipart.maxSize" value="1048576000"/>
     <!--<constant name="struts.multipart.saveDir" value="/WEB-INF/tmp"/>-->
     <package name="default" extends="struts-default">
